@@ -1,0 +1,60 @@
+@import "../helpers/variables";
+
+// BUTTONS start
+
+.btn {
+  font-family: OpenSans;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+  cursor: pointer;
+  border: none;
+  padding: 5px 30px;
+  border-radius: 2px;
+  transition: all 0.2s cubic-bezier(0.33, 0.66, 0.66, 1);
+}
+
+.primary_btn {
+  background-color: $primary_dark_color;
+  color: $primary_light_color;
+}
+.primary_btn:hover {
+  background-color: $primary_dark_hover_color + cc;
+  box-shadow: $primary_dark_hover_color 0 1px 4px;
+}
+
+.secondary_btn {
+  color: $secondary_dark_color;
+  background-color: $secondary_light_color;
+  width: auto;
+}
+
+.secondary_btn:hover {
+  color: $primary_dark_hover_color;
+  background-color: $secondary_light_hover_color;
+  box-shadow: $secondary_light_color 0 1px 4px;
+}
+
+// BUTTONS end
+
+// PROGRESSBAR start
+
+.progressBar {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+  .progressBar_container {
+    width: 80%;
+    // border: black solid 1px;
+    background-color: $secondary_light_color;
+    border-radius: 10px;
+    .progressBar_display {
+      background-color: $accent_light_green;
+      height: 6px;
+      border-radius: 10px;
+      transition: width 0.5s;
+    }
+  }
+}
+
+// PROGRESSBAR end

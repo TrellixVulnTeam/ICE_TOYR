@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import location from '../../a_assets/images/location.png';
 import truck from '../../a_assets/images/truck.png';
 
 function Footer() {
+
   return (
     <div className='footer'>
       <div className='footer__b780'>
         <div className='footer__b__b759'>
-          <h2 className='footer__b__b__b700'>ICE</h2>
+          <h2 className='footer__b__b__b700'><Link to="/">ICE</Link></h2>
         </div>
         <div className='footer__b__b892'>
           <p className='footer__b__b__b397'>Iserman</p>
@@ -25,14 +26,15 @@ function Footer() {
           <p className='footer__b__b__b256'>(612) 743-8351</p>
         </div>
         <div className='footer__b__b160'>
-          <button>Sign up</button>
+          <button className="footer__b__b--i413 btn primary_btn">Get a Quote</button>
+          <div className='footer__b__b187'>
+            <img src={truck} alt='truck' />
+          </div>
         </div>
       </div>
-      <div className='footer__b803'>
-        <div className='footer__b__b187'>
-          <img src={truck} alt='truck' />
-        </div>
-      </div>
+      {/* <div className='footer__b803'>
+
+      </div> */}
       <div className='footer__b798'>
         <p className='footer__b__b874'>Copyright © 2021. All rights reserved.</p>
         <p className='footer__b__b874'>Designed by AB.UXD. Developed by Justus Witmer.</p>

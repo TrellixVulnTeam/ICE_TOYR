@@ -2,7 +2,7 @@ import { takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
 function* fetchCustomerSaga() {
-  console.log('in fetchCustomerSaga');
+
   yield axios({
     method: 'GET',
     url: '/api/customer',
@@ -14,7 +14,6 @@ function* fetchCustomerSaga() {
 }
 
 function* addCustomerSaga(action) {
-  console.log('in addCustomerSaga with action.payload', action.payload);
   yield axios({
     method: 'POST',
     url: '/api/customer',

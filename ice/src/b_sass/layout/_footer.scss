@@ -50,7 +50,7 @@
     }
     .footer__b__b340 {
       margin-left: 50px;
-      width: 114px;
+      min-width: 134px;
       text-align: left;
       font-size: 14px;
       line-height: 18px;
@@ -61,16 +61,15 @@
       }
     }
     .footer__b__b160 {
-      margin-left: 413px;
-    }
-  }
-  .footer__b803 {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px;
-    
-    .footer__b__b187 {
-      width: 400px;
+      margin-left: 20px;
+
+      .footer__b__b--i413 {
+
+      }
+      .footer__b__b187 {
+        margin-top: 80px;
+        width: 400px;
+      }
     }
   }
   .footer__b798 {
@@ -79,7 +78,6 @@
     .footer__b__b874 {
       font-size: 14px;
       line-height: 11px;
-      letter-spacing: -0.03em;
       margin-bottom: 10px;
     }
   }

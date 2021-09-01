@@ -1,22 +1,34 @@
 // eslint-disable-next-line
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import rightArrow from '../../a_assets/images/rightArrow.png';
 import Excavating from '../../a_assets/images/Excavating.png';
 import Snowblowing from '../../a_assets/images/Snowblower.png';
-import icon from '../../a_assets/images/graySquare.png';
 import star from '../../a_assets/images/star1.png';
 
-function Home() {
+// Expectations assets
+import ICE_Customer_Exp from '../../a_assets/images/ICE_Customer_Exp.png';
+import ICE_Hassle_Free from '../../a_assets/images/ICE_Hassle_Free.png';
+import ICE_Profess_Serv from '../../a_assets/images/ICE_Profess_Serv.png';
+import ICE_Reliabiility from '../../a_assets/images/ICE_Reliabiility.png';
+import ICE_Transparency from '../../a_assets/images/ICE_Transparency.png';
+import ICE_Honest_Pricing from '../../a_assets/images/ICE_Honest_Pricing.png';
+
+function Home(props) {
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-
-    console.log('in UseEffect');
+    let pathname = document.URL.search('/quote');
     dispatch({
       type: 'FETCH_CUSTOMER',
+    });
+    dispatch({
+      type: 'CHECK_FOR_QUOTE',
+      payload: pathname
     });
   }, [dispatch]);
 
@@ -27,47 +39,42 @@ function Home() {
 
   let customer = {
     customer: {
-      customer_first_name: "Gene",
-      customer_last_name: "Iserman",
-      customer_company_name: "Electron Ltd",
-      customer_email: "johndoe@zuper.com",
+      customer_first_name: "Jane",
+      customer_last_name: "Doe",
+      customer_company_name: "Window Ltd",
+      customer_email: "janedoe@windowltd.com",
       customer_category: "5f1a48d11289d5e82e798167",
     },
   };
 
   let expectations = [
     {
-      icon: icon,
+      icon: ICE_Reliabiility,
       title: 'Relability',
       description: 'We do what we say we are going to do to earn our customers trust. Every Time!',
     },
     {
-      icon: icon,
+      icon: ICE_Profess_Serv,
       title: 'Professional Service',
       description: 'It matters to us that you get the quality service that you deserve.',
     },
     {
-      icon: icon,
+      icon: ICE_Hassle_Free,
       title: 'Hassle-Free Quotes',
       description: 'Get a customized quote in minutes and schedule service immediately.',
     },
     {
-      icon: icon,
+      icon: ICE_Transparency,
       title: 'Transparency',
       description: 'Surprises, in this business are not a good thing.',
     },
     {
-      icon: icon,
-      title: 'Need Info',
-      description: 'More Info',
-    },
-    {
-      icon: icon,
+      icon: ICE_Honest_Pricing,
       title: 'Honest Pricing',
       description: 'Competitive rates with no hidden costs.',
     },
     {
-      icon: icon,
+      icon: ICE_Customer_Exp,
       title: 'Customer Experience Guarantee',
       description: 'We care about every aspect of our service. If you aren\'t happy, we will make it right!',
     }
@@ -111,7 +118,12 @@ function Home() {
           onMouseEnter={() => setActive('snowActive')}
           onMouseLeave={() => setActive('notActive')}
         >
-          <img className='home__b__b--i478' src={Snowblowing} alt='' />
+          <img
+            className='home__b__b--i478'
+            src={Snowblowing}
+            alt='snowblowing'
+            onClick={() => props.history.push('quote/sub-service')}
+          />
           <p className='home__b__b--i416'>Snow Removal</p>
         </div>
         <div
@@ -119,7 +131,12 @@ function Home() {
           onMouseEnter={() => setActive('excavatingActive')}
           onMouseLeave={() => setActive('notActive')}
         >
-          <img className='home__b__b--i618' src={Excavating} alt='' />
+          <img
+            className='home__b__b--i618'
+            src={Excavating}
+            alt='excavating'
+            onClick={() => props.history.push('quote/sub-service')}
+          />
           <p className='home__b__b--i785'>Excavation</p>
         </div>
       </div>
@@ -129,7 +146,9 @@ function Home() {
           {expectations.map((promise, index) =>
             index !== 6 ?
               <div key={index} className='home__b__b__b737'>
-                <img className='home__b__b__b--i436' src={promise.icon} alt='' />
+                <div className='home__b__b__b__b436'>
+                  <img src={promise.icon} alt={promise.title} />
+                </div>
                 <h3 className='home__b__b__b__b991'>{promise.title}</h3>
                 <p className='home__b__b__b__b419'>{promise.description}</p>
               </div>
@@ -169,8 +188,9 @@ function Home() {
             )}
         </div>
       </div>
+      <div id="mapid"></div>
     </div >
   );
 }
 
-export default Home;
+export default connect()(withRouter(Home));

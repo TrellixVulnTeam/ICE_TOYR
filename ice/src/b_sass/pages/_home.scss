@@ -1,4 +1,7 @@
 .home {
+  #mapid {
+    height: 180px;
+  }
 
   .home__b491 {
 
@@ -119,11 +122,13 @@ $width: 62.5%;
 
       .home__b__b--i478 {
         position: relative;
+        cursor: pointer;
       }
     }
 
     .home__b__b746:hover {
       transform: translateY(-30px);
+      transition: .5s ease;
     }
 
     .home__b__b198 {
@@ -150,11 +155,13 @@ $width: 62.5%;
 
       .home__b__b--i618 {
         position: relative;
+        cursor: pointer;
       }
     }
 
     .home__b__b198:hover {
       transform: translateY(30px);
+      transition: .5s ease;
     }
 
     .path-active {
@@ -163,6 +170,7 @@ $width: 62.5%;
   }
 
   .home__b226 {
+    margin-bottom: 150px;
 
     .home__b__b512 {
       font-style: normal;
@@ -183,10 +191,8 @@ $width: 62.5%;
       .home__b__b__b737 {
         width: 340px;
 
-        .home__b__b__b--i436 {
-          width: 100px;
-          position: relative;
-          left: -120px;
+        .home__b__b__b__b436 {
+          max-width: 100px;
         }
 
         .home__b__b__b__b991 {

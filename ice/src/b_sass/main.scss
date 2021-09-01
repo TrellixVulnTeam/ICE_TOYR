@@ -14,9 +14,11 @@
 // *************** Pages *************** //
 // such as specific page styles
 @import "./pages/home";
+@import "./pages/quote";
 
 // *************** Components *************** //
 // such as buttons, carousel, cover, etc.
+@import "./components/components.scss";
 
 // *************** Global *************** //
 // such as fonts, global formatting, etc.
@@ -52,7 +54,7 @@
 }
 
 body {
-  margin: -8px;
+  margin: 0;
 }
 
 img {

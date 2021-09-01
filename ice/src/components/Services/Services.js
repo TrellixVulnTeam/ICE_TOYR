@@ -1,7 +1,11 @@
 function Services() {
+
   return (
     <div>
-      In Services
+      <h2>Services we Offer</h2>
+      <div>
+        List of services
+      </div>
     </div>
   );
 }

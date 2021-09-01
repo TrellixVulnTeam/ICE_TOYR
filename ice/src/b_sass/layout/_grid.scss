@@ -37,6 +37,10 @@
       grid-area: reviews;
     }
   }
+
+  .contact {
+    grid-area: body;
+  }
   
   .footer {
     grid-area: footer;
@@ -61,6 +65,11 @@
       .footer__b798 {
         grid-area: footer_copy;
       }
+  }
+
+  .quote {
+    grid-area: body;
+    margin-top: 10px;
   }
 
 }
