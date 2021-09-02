@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
@@ -9,7 +10,7 @@ function Step2(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 3 }
+      payload: { divisor: 6, step_number: 2 }
     });
     props.history.push('./location');
   }
@@ -17,13 +18,22 @@ function Step2(props) {
   const goBack = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 1 }
+      payload: { divisor: 6, step_number: 0 }
     });
     props.history.push('./type-of-service');
   }
 
   return (
     <div className='quote'>
+
+      <h2>Is this for residential or commercial?</h2>
+
+      <input type="radio" id="residential" name="sub_service" value="Residential" />
+      <label htmlFor="residential">Residential</label>
+      <input type="radio" id="commercial" name="sub_service" value="Commercial" />
+      <label htmlFor="commercial">Commercial</label>
+
+      <br></br>
       <button onClick={goBack}>Go to type of service</button>
       <button onClick={goForward}>Go to location</button>
 

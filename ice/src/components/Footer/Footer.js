@@ -1,10 +1,21 @@
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 
 import location from '../../a_assets/images/location.png';
 import truck from '../../a_assets/images/truck.png';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
-function Footer() {
+function Footer(props) {
+
+  let dispatch = useDispatch();
+
+  const goForward = () => {
+    dispatch({
+      type: 'QUOTE_PROGRESS',
+      payload: { divisor: 6, step_number: 0 }
+    });
+    props.history.push('./quote/type-of-service');
+  }
 
   return (
     <div className='footer'>
@@ -26,7 +37,10 @@ function Footer() {
           <p className='footer__b__b__b256'>(612) 743-8351</p>
         </div>
         <div className='footer__b__b160'>
-          <button className="footer__b__b--i413 btn primary_btn">Get a Quote</button>
+          <button
+            className="footer__b__b--i413 btn primary_btn"
+            onClick={goForward}
+          >Get a Quote</button>
           <div className='footer__b__b187'>
             <img src={truck} alt='truck' />
           </div>
@@ -43,4 +57,4 @@ function Footer() {
   );
 }
 
-export default connect()(withRouter(Footer));
+export default connect(mapStoreToProps)(withRouter(Footer));

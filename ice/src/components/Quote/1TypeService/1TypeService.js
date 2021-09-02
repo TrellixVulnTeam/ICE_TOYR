@@ -1,8 +1,8 @@
+import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 function Step1(props) {
-
 
   let dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ function Step1(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 2 }
+      payload: { divisor: 6, step_number: 1 }
     });
     props.history.push('./sub-service');
   }
@@ -28,29 +28,22 @@ function Step1(props) {
       type: 'QUOTE_PROGRESS',
       payload: { divisor: 6, step_number: 0 }
     });
-    props.history.push('/quote')
+    props.history.push('/')
   }
 
   return (
     <div>
-      <input
-        placeholder='enter first name'
-        onChange={(e) => sendInfo('firstName', e)}
-      />
-      <input
-        placeholder='enter last name'
-        onChange={(e) => sendInfo('lastName', e)}
-      />
 
-      <p>How did you hear about us?</p>
-      <select onChange={(e) => sendInfo('howYouHeardOfUs', e)}>
-        <option value='Via a friend'>Via a friend</option>
-        <option value='Through an ad'>Through an ad</option>
-        <option value='Online search'>Online search</option>
-        <option value='Other'>Other</option>
-      </select>
+      <h2>What type of service would you like?</h2>
 
-      <button onClick={goBack}>Go to quote</button>
+      <input type="radio" id="snow_removal" name="service" value="Snow Removal" />
+      <label htmlFor="snow_removal">Snow Removal</label>
+      <input type="radio" id="excavating" name="service" value="Excavating" />
+      <label htmlFor="excavating">Excavating</label>
+
+      <br></br>
+
+      <button onClick={goBack}>Go home</button>
       <button onClick={goForward}>Go to sub service</button>
     </div>
   );

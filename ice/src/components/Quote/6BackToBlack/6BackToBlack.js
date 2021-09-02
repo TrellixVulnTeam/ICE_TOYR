@@ -8,23 +8,28 @@ function Step6(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 0 }
+      payload: { divisor: 6, step_number: 6 }
     });
-    props.history.push('/');
+    props.history.push('./thank-you');
   }
 
   const goBack = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 5 }
+      payload: { divisor: 6, step_number: 4 }
     });
     props.history.push('./sidewalk');
   }
 
   return (
     <div className='quote'>
+
+      <h2>Back to Black</h2>
+      <p>Consider our Back to Black service for premium support and service.</p>
+
+      <br></br>
       <button onClick={goBack}>Go to driveway</button>
-      <button onClick={goForward}>Go home</button>
+      <button onClick={goForward}>Submit</button>
 
     </div>
   );

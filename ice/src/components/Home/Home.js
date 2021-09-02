@@ -16,6 +16,7 @@ import ICE_Profess_Serv from '../../a_assets/images/ICE_Profess_Serv.png';
 import ICE_Reliabiility from '../../a_assets/images/ICE_Reliabiility.png';
 import ICE_Transparency from '../../a_assets/images/ICE_Transparency.png';
 import ICE_Honest_Pricing from '../../a_assets/images/ICE_Honest_Pricing.png';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 function Home(props) {
 
@@ -98,6 +99,14 @@ function Home(props) {
     });
   };
 
+  const goForward = () => {
+    dispatch({
+      type: 'QUOTE_PROGRESS',
+      payload: { divisor: 6, step_number: 1 }
+    });
+    props.history.push('quote/sub-service');
+  }
+
 
   return (
     <div className='home'>
@@ -122,7 +131,7 @@ function Home(props) {
             className='home__b__b--i478'
             src={Snowblowing}
             alt='snowblowing'
-            onClick={() => props.history.push('quote/sub-service')}
+            onClick={goForward}
           />
           <p className='home__b__b--i416'>Snow Removal</p>
         </div>
@@ -135,7 +144,7 @@ function Home(props) {
             className='home__b__b--i618'
             src={Excavating}
             alt='excavating'
-            onClick={() => props.history.push('quote/sub-service')}
+            onClick={goForward}
           />
           <p className='home__b__b--i785'>Excavation</p>
         </div>
@@ -193,4 +202,4 @@ function Home(props) {
   );
 }
 
-export default connect()(withRouter(Home));
+export default connect(mapStoreToProps)(withRouter(Home));
