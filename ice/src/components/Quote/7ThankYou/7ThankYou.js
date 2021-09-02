@@ -8,7 +8,7 @@ function ThankYou(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 0 }
+      payload: { divisor: 7, step_number: 0 }
     });
     props.history.push('/');
   }
@@ -16,7 +16,7 @@ function ThankYou(props) {
   const goBack = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 5 }
+      payload: { divisor: 7, step_number: 5 }
     });
     props.history.push('./back-to-black');
   }

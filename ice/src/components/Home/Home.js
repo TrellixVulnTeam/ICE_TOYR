@@ -102,7 +102,7 @@ function Home(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 1 }
+      payload: { divisor: 7, step_number: 1 }
     });
     props.history.push('quote/sub-service');
   }

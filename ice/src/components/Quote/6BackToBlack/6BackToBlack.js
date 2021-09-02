@@ -1,14 +1,14 @@
 import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-function Step6(props) {
+function BackToBlack(props) {
 
   let dispatch = useDispatch();
 
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 6 }
+      payload: { divisor: 7, step_number: 6 }
     });
     props.history.push('./thank-you');
   }
@@ -16,7 +16,7 @@ function Step6(props) {
   const goBack = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 4 }
+      payload: { divisor: 7, step_number: 4 }
     });
     props.history.push('./sidewalk');
   }
@@ -35,4 +35,4 @@ function Step6(props) {
   );
 }
 
-export default connect()(withRouter(Step6));
+export default connect()(withRouter(BackToBlack));

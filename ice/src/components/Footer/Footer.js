@@ -12,7 +12,7 @@ function Footer(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 0 }
+      payload: { divisor: 7, step_number: 0 }
     });
     props.history.push('./quote/type-of-service');
   }

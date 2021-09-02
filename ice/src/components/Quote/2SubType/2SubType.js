@@ -3,14 +3,14 @@ import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 
-function Step2(props) {
+function SubType(props) {
 
   let dispatch = useDispatch();
 
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 2 }
+      payload: { divisor: 7, step_number: 2 }
     });
     props.history.push('./location');
   }
@@ -18,7 +18,7 @@ function Step2(props) {
   const goBack = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 0 }
+      payload: { divisor: 7, step_number: 0 }
     });
     props.history.push('./type-of-service');
   }
@@ -44,4 +44,4 @@ function Step2(props) {
   );
 }
 
-export default connect(mapStoreToProps)(withRouter(Step2));
+export default connect(mapStoreToProps)(withRouter(SubType));

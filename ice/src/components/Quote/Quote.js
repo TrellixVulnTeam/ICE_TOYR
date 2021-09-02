@@ -10,6 +10,7 @@ import Sidewalk from './5Sidewalk/5Sidewalk';
 import BackToBlack from './6BackToBlack/6BackToBlack';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import ThankYou from './7ThankYou/7ThankYou';
+import NameEmail from './0NameEmail/0NameEmail';
 
 function Quote(props) {
 
@@ -27,7 +28,7 @@ function Quote(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 0 }
+      payload: { divisor: 7, step_number: 0 }
     });
     props.history.push('/');
   }
@@ -37,6 +38,7 @@ function Quote(props) {
       <ProgressBar />
       <button onClick={goForward}>Exit Quote</button>
 
+      <Route exact path={`${props.match.path}/name-email`} component={NameEmail} />
       <Route exact path={`${props.match.path}/type-of-service`} component={TypeService} />
       <Route exact path={`${props.match.path}/sub-service`} component={SubType} />
       <Route exact path={`${props.match.path}/location`} component={Location} />

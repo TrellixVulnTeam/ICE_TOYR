@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Formik, Field, Form } from 'formik';
 
-function Step1(props) {
+
+function TypeService(props) {
 
   let dispatch = useDispatch();
 
@@ -18,7 +20,7 @@ function Step1(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 1 }
+      payload: { divisor: 7, step_number: 2 }
     });
     props.history.push('./sub-service');
   }
@@ -26,27 +28,60 @@ function Step1(props) {
   const goBack = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 6, step_number: 0 }
+      payload: { divisor: 7, step_number: 1 }
     });
-    props.history.push('/')
+    props.history.push('./name-email')
   }
 
   return (
     <div>
 
       <h2>What type of service would you like?</h2>
-
-      <input type="radio" id="snow_removal" name="service" value="Snow Removal" />
-      <label htmlFor="snow_removal">Snow Removal</label>
-      <input type="radio" id="excavating" name="service" value="Excavating" />
-      <label htmlFor="excavating">Excavating</label>
+      <form>
+        <input required type="radio" id="snow_removal" name="service" value="Snow Removal" />
+        <label htmlFor="snow_removal">Snow Removal</label>
+        <input required type="radio" id="excavating" name="service" value="Excavating" />
+        <label htmlFor="excavating">Excavating</label>
+        <button onClick={goBack}>Go home</button>
+        <input type="submit" />
+      </form>
 
       <br></br>
 
-      <button onClick={goBack}>Go home</button>
-      <button onClick={goForward}>Go to sub service</button>
+      <Formik
+        initialValues={{
+          picked: '',
+        }}
+        onSubmit={async (values) => {
+          await new Promise((r) => setTimeout(r, 500));
+          alert(JSON.stringify(values, null, 2));
+        }}
+      >
+        {({ values }) => (
+          <Form>
+            <div id="my-radio-group">Picked</div>
+            <div role="group" aria-labelledby="my-radio-group">
+              <label>
+                <Field type="radio" name="picked" value="One" />
+                One
+              </label>
+              <label>
+                <Field type="radio" name="picked" value="Two" />
+                Two
+              </label>
+              <div>Picked: {values.picked}</div>
+            </div>
+
+            <button type="submit">Submit</button>
+          </Form>
+        )}
+      </Formik>
+
+      <br></br>
+
+
     </div>
   );
 }
 
-export default connect()(withRouter(Step1));
+export default connect()(withRouter(TypeService));

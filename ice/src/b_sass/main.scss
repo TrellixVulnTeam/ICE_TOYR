@@ -1,4 +1,3 @@
-
 // *************** Helpers *************** //
 // such as variables, sass functions, sass mixins, etc.
 @import "./helpers/functions";
@@ -70,4 +69,5 @@ p {
   text-align: center;
   font-family: OpenSans;
   padding: 0 130px;
+  height: 100vh;
 }
