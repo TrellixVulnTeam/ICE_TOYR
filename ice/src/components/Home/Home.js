@@ -24,9 +24,9 @@ function Home(props) {
 
   useEffect(() => {
     let pathname = document.URL.search('/quote');
-    dispatch({
-      type: 'FETCH_CUSTOMER',
-    });
+    // dispatch({
+    //   type: 'FETCH_CUSTOMER',
+    // });
     dispatch({
       type: 'CHECK_FOR_QUOTE',
       payload: pathname

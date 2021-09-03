@@ -14,7 +14,7 @@ function Footer(props) {
       type: 'QUOTE_PROGRESS',
       payload: { divisor: 7, step_number: 0 }
     });
-    props.history.push('./quote/type-of-service');
+    props.history.push('./quote/name-email');
   }
 
   return (

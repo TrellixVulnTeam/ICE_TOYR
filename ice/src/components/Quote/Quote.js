@@ -23,6 +23,18 @@ function Quote(props) {
       type: 'CHECK_FOR_QUOTE',
       payload: pathname
     });
+
+    const loadCustomer = () => {
+      dispatch({
+        type: 'UPDATE_CUSTOMER',
+        payload: {
+          name: '',
+          email: '',
+          service: '',
+        },
+      });
+    }
+    loadCustomer();
   }, [dispatch]);
 
   const goForward = () => {

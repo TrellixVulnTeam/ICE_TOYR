@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../../redux/mapStoreToProps';

@@ -1,87 +1,78 @@
-import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Formik, Field, Form } from 'formik';
-
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 function TypeService(props) {
 
   let dispatch = useDispatch();
 
-  const sendInfo = (property, e) => {
-    console.log('checking value of e: ', e.target.value);
-    dispatch({
-      type: 'UPDATE_CUSTOMER',
-      payload:
-        { [property]: e.target.value }
-    });
-  }
-
-  const goForward = () => {
-    dispatch({
-      type: 'QUOTE_PROGRESS',
-      payload: { divisor: 7, step_number: 2 }
-    });
-    props.history.push('./sub-service');
-  }
-
-  const goBack = () => {
-    dispatch({
-      type: 'QUOTE_PROGRESS',
-      payload: { divisor: 7, step_number: 1 }
-    });
-    props.history.push('./name-email')
-  }
+  const sendInfo = (values, path) => {
+    switch (path) {
+      case 'forward':
+        dispatch({
+          type: 'UPDATE_CUSTOMER',
+          payload: values
+        });
+        dispatch({
+          type: 'QUOTE_PROGRESS',
+          payload: { divisor: 7, step_number: 2 }
+        });
+        props.history.push('./sub-service');
+        break;
+      case 'back':
+        dispatch({
+          type: 'QUOTE_PROGRESS',
+          payload: { divisor: 7, step_number: 1 }
+        });
+        props.history.push('./name-email');
+        break;
+      default:
+    }
+  };
 
   return (
     <div>
-
       <h2>What type of service would you like?</h2>
-      <form>
-        <input required type="radio" id="snow_removal" name="service" value="Snow Removal" />
-        <label htmlFor="snow_removal">Snow Removal</label>
-        <input required type="radio" id="excavating" name="service" value="Excavating" />
-        <label htmlFor="excavating">Excavating</label>
-        <button onClick={goBack}>Go home</button>
-        <input type="submit" />
-      </form>
 
-      <br></br>
 
       <Formik
-        initialValues={{
-          picked: '',
+        initialValues={{ service: '' }}
+        validate={values => {
+          const errors = {};
+          if (!values.service) {
+            errors.service = 'Please pick an option';
+          }
+          return errors;
         }}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            sendInfo(values, 'forward');
+            setSubmitting(false);
+          }, 400);
         }}
       >
-        {({ values }) => (
+        {({ isSubmitting }) => (
           <Form>
-            <div id="my-radio-group">Picked</div>
             <div role="group" aria-labelledby="my-radio-group">
               <label>
-                <Field type="radio" name="picked" value="One" />
-                One
+                <Field type="radio" name="service" value='Snow Removal' />
+                Snow Removal
               </label>
               <label>
-                <Field type="radio" name="picked" value="Two" />
-                Two
+                <Field type="radio" name="service" value="Excavating" />
+                Excavating
               </label>
-              <div>Picked: {values.picked}</div>
             </div>
-
-            <button type="submit">Submit</button>
+            <ErrorMessage name="service" component="div" />
+            <button onClick={() => sendInfo('', 'back')}>Go to name and email</button>
+            <button type="submit" disabled={isSubmitting}>Go to location</button>
           </Form>
         )}
       </Formik>
-
-      <br></br>
-
-
     </div>
   );
 }
 
-export default connect()(withRouter(TypeService));
+export default connect(mapStoreToProps)(withRouter(TypeService));
