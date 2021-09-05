@@ -1,5 +1,35 @@
+@import "../components/components.scss";
+
 .quote {
   width: 80%;
   margin: auto;
-  border: black solid 1px;
+  background-color: #f9f9f9;
+  padding: 0 60px;
+
+  .quote_closeBtn {
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .quote_backBtnPos {
+    position: relative;
+    top: -68px;
+    float: left;
+  }
+
+  .email_i673 {
+    background: #000000;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
+
+  .quote_b231 {
+    bottom: 0;
+    margin-bottom: 50px;
+  }
+
+  .quoteStep_container {
+    min-height: 50vh;
+  }
 }

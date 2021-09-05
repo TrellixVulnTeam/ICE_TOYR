@@ -12,9 +12,9 @@ function Footer(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 7, step_number: 0 }
+      payload: { divisor: 8, step_number: 0 }
     });
-    props.history.push('./quote/name-email');
+    props.history.push('./quote/name');
   }
 
   return (

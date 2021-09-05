@@ -2,37 +2,36 @@ import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import { useEffect, useState } from 'react';
+import NextButton from '../../CustomComponents/NextButton';
 
 function TypeService(props) {
 
   let dispatch = useDispatch();
 
-  const sendInfo = (values, path) => {
-    switch (path) {
-      case 'forward':
-        dispatch({
-          type: 'UPDATE_CUSTOMER',
-          payload: values
-        });
-        dispatch({
-          type: 'QUOTE_PROGRESS',
-          payload: { divisor: 7, step_number: 2 }
-        });
-        props.history.push('./sub-service');
-        break;
-      case 'back':
-        dispatch({
-          type: 'QUOTE_PROGRESS',
-          payload: { divisor: 7, step_number: 1 }
-        });
-        props.history.push('./name-email');
-        break;
-      default:
-    }
+  const services = ['Snow Removal', 'Excavating'];
+  const [isChecked, setIsChecked] = useState('');
+
+  useEffect(() => {
+    setIsChecked(props.store.customerInfo.service);
+  }, [props.store.customerInfo.service]);
+
+  const sendInfo = (values) => {
+    let step_number = props.store.quoteProgress.step_number;
+
+    dispatch({
+      type: 'UPDATE_CUSTOMER',
+      payload: values
+    });
+    dispatch({
+      type: 'QUOTE_PROGRESS',
+      payload: { divisor: 8, step_number: step_number + 1 }
+    });
+    props.history.push('./sub-service');
   };
 
   return (
-    <div>
+    <div className="quoteStep_container">
       <h2>What type of service would you like?</h2>
 
 
@@ -40,6 +39,10 @@ function TypeService(props) {
         initialValues={{ service: '' }}
         validate={values => {
           const errors = {};
+
+          if (props.store.customerInfo.service) {
+            return errors;
+          }
           if (!values.service) {
             errors.service = 'Please pick an option';
           }
@@ -47,8 +50,12 @@ function TypeService(props) {
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            sendInfo(values, 'forward');
+
+            if (props.store.customerInfo.service) {
+              sendInfo({ service: props.store.customerInfo.service }, 'forward');
+            } else {
+              sendInfo(values);
+            }
             setSubmitting(false);
           }, 400);
         }}
@@ -56,18 +63,21 @@ function TypeService(props) {
         {({ isSubmitting }) => (
           <Form>
             <div role="group" aria-labelledby="my-radio-group">
-              <label>
-                <Field type="radio" name="service" value='Snow Removal' />
-                Snow Removal
-              </label>
-              <label>
-                <Field type="radio" name="service" value="Excavating" />
-                Excavating
-              </label>
+              {services.map(s => (
+                <label key={s}>
+                  <Field
+                    type="radio"
+                    name="service"
+                    value={s}
+                    checked={isChecked === s}
+                    onClick={e => setIsChecked(e.target.value)}
+                  />
+                  {s}
+                </label>
+              ))}
             </div>
             <ErrorMessage name="service" component="div" />
-            <button onClick={() => sendInfo('', 'back')}>Go to name and email</button>
-            <button type="submit" disabled={isSubmitting}>Go to location</button>
+            <NextButton disabled={isSubmitting} />
           </Form>
         )}
       </Formik>

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import rightArrow from '../../a_assets/images/rightArrow.png';
+// import rightArrow from '../../a_assets/images/rightArrow.png';
 import Excavating from '../../a_assets/images/Excavating.png';
 import Snowblowing from '../../a_assets/images/Snowblower.png';
 import star from '../../a_assets/images/star1.png';
@@ -36,17 +36,17 @@ function Home(props) {
 
   let title = "Your heavy lifting ends here!";
   let description = "Are you looking for industry leading contractors that are reliable, quality, and fair priced? Well I guess we couldn't hide forever. See what ICE Contractors can do for your projects with a 2 minute quote!";
-  let quoteDescription = "Get a quote in under 2 minutes for your excavating, contracting and snow removal needs. Enter your zip code.";
+  // let quoteDescription = "Get a quote in under 2 minutes for your excavating, contracting and snow removal needs. Enter your zip code.";
 
-  let customer = {
-    customer: {
-      customer_first_name: "Jane",
-      customer_last_name: "Doe",
-      customer_company_name: "Window Ltd",
-      customer_email: "janedoe@windowltd.com",
-      customer_category: "5f1a48d11289d5e82e798167",
-    },
-  };
+  // let customer = {
+  //   customer: {
+  //     customer_first_name: "Jane",
+  //     customer_last_name: "Doe",
+  //     customer_company_name: "Window Ltd",
+  //     customer_email: "janedoe@windowltd.com",
+  //     customer_category: "5f1a48d11289d5e82e798167",
+  //   },
+  // };
 
   let expectations = [
     {
@@ -84,27 +84,27 @@ function Home(props) {
 
 
   const [active, setActive] = useState('notActive');
-  const [zipcode, setZipcode] = useState('');
+  // const [zipcode, setZipcode] = useState('');
 
-  const beginQuote = () => {
-    console.log('in begin quote and showing zipcode', zipcode);
-    createCustomer();
-  }
+  // const beginQuote = () => {
+  //   console.log('in begin quote and showing zipcode', zipcode);
+  //   createCustomer();
+  // }
 
-  const createCustomer = () => {
-    console.log('in createCustomer');
-    dispatch({
-      type: 'ADD_CUSTOMER',
-      payload: customer
-    });
-  };
+  // const createCustomer = () => {
+  //   console.log('in createCustomer');
+  //   dispatch({
+  //     type: 'ADD_CUSTOMER',
+  //     payload: customer
+  //   });
+  // };
 
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 7, step_number: 1 }
+      payload: { divisor: 8, step_number: 2 }
     });
-    props.history.push('quote/sub-service');
+    props.history.push('quote/name');
   }
 
 
@@ -114,11 +114,11 @@ function Home(props) {
         <h2 className='home__b--i974'>{title}</h2>
         <p className='home__b--i230'>{description}</p>
         <div className='home__b__b516'>
-          <p className='home__b__b--i900'>{quoteDescription}</p>
+          {/* <p className='home__b__b--i900'>{quoteDescription}</p>
           <div className='home__b__b__b912'>
             <input type="text" name="zipcode" className='home__b__b__b--i582' placeholder='Enter your zipcode' onChange={(e) => setZipcode(e.target.value)} />
             <button className='home__b__b__b--i368' onClick={beginQuote}>Get my Quote <img className='home__b__b__b--i--i440' src={rightArrow} alt='' /></button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className='home__b383'>

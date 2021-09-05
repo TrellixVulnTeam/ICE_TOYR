@@ -5,16 +5,16 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { useEffect, useState } from 'react';
 import NextButton from '../../CustomComponents/NextButton';
 
-function SubService(props) {
+function Driveway(props) {
 
   let dispatch = useDispatch();
 
-  const subServices = ['Residential', 'Commercial'];
+  const driveway = ['Single Car', 'Double Car', 'Triple Car', 'My driveway is different'];
   const [isChecked, setIsChecked] = useState('');
 
   useEffect(() => {
-    setIsChecked(props.store.customerInfo.subServices);
-  }, [props.store.customerInfo.subServices]);
+    setIsChecked(props.store.customerInfo.driveway);
+  }, [props.store.customerInfo.driveway]);
 
   const sendInfo = (values) => {
     let step_number = props.store.quoteProgress.step_number;
@@ -26,32 +26,31 @@ function SubService(props) {
       type: 'QUOTE_PROGRESS',
       payload: { divisor: 8, step_number: step_number + 1 }
     });
-    props.history.push('./location');
+    props.history.push('./sidewalk');
   };
 
   return (
-    <div className='quote'>
-
-      <h2>Is this for residential or commercial?</h2>
+    <div>
+      <h2>What type of driveway do you have?</h2>
 
       <Formik
-        initialValues={{ subServices: '' }}
+        initialValues={{ driveway: '' }}
         validate={values => {
           const errors = {};
 
-          if (props.store.customerInfo.subServices) {
+          if (props.store.customerInfo.driveway) {
             return errors;
           }
-          if (!values.subServices) {
-            errors.subServices = 'Please pick an option';
+          if (!values.driveway) {
+            errors.driveway = 'Please pick an option';
           }
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
 
-            if (props.store.customerInfo.subServices) {
-              sendInfo({ service: props.store.customerInfo.subServices }, 'forward');
+            if (props.store.customerInfo.driveway) {
+              sendInfo({ service: props.store.customerInfo.driveway }, 'forward');
             } else {
               sendInfo(values);
             }
@@ -62,30 +61,26 @@ function SubService(props) {
         {({ isSubmitting }) => (
           <Form>
             <div role="group" aria-labelledby="my-radio-group">
-              {subServices.map(s => (
-                <label key={s}>
+              {driveway.map(d => (
+                <label key={d}>
                   <Field
                     type="radio"
-                    name="subServices"
-                    value={s}
-                    checked={isChecked === s}
+                    name="driveway"
+                    value={d}
+                    checked={isChecked === d}
                     onClick={e => setIsChecked(e.target.value)}
                   />
-                  {s}
+                  {d}
                 </label>
               ))}
             </div>
-            <ErrorMessage name="subServices" component="div" />
+            <ErrorMessage name="driveway" component="div" />
             <NextButton disabled={isSubmitting} />
           </Form>
         )}
       </Formik>
-
-      <p>Hi, {props.store.customerInfo.name}!</p>
-
-
     </div>
   );
 }
 
-export default connect(mapStoreToProps)(withRouter(SubService));
+export default connect(mapStoreToProps)(withRouter(Driveway));

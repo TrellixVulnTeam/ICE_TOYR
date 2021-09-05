@@ -44,7 +44,7 @@
   display: flex;
   justify-content: center;
   .progressBar_container {
-    width: 80%;
+    width: 70%;
     // border: black solid 1px;
     background-color: $secondary_light_color;
     border-radius: 10px;
@@ -58,3 +58,19 @@
 }
 
 // PROGRESSBAR end
+
+// BACKBUTTON start
+.backButton {
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+
+  .backButton_arrow {
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+}
+// BACKBUTTON end

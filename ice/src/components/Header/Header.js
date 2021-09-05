@@ -1,16 +1,25 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 function Header(props) {
 
   const [header, setHeader] = useState(false);
+  let dispatch = useDispatch();
 
   const changeHeader = () => {
     window.scrollY >= 70 ? setHeader(true) : setHeader(false);
   }
 
   window.addEventListener('scroll', changeHeader);
+
+  const sendInfo = () => {
+    dispatch({
+      type: 'QUOTE_PROGRESS',
+      payload: { divisor: 8, step_number: 0 }
+    });
+    props.history.push('/quote/type-of-service');
+  };
 
   return (
     <div className={header ? 'header active' : 'header'}>
@@ -25,7 +34,7 @@ function Header(props) {
       </div>
       <div className='header__b284'>
         <p onClick={() => props.history.push('/services')}>Services</p>
-        <p onClick={() => props.history.push('/quote')}>Get a Quote</p>
+        <p onClick={sendInfo}>Get a Quote</p>
         <p onClick={() => props.history.push('/login')}>Log in</p>
       </div>
     </div>

@@ -16,10 +16,9 @@ import mapStoreToProps from './redux/mapStoreToProps';
 
 function App(props) {
 
-
   return (
     <Router>
-      <div className="App">
+      <div className="App" style={{ height: props.store.quote === -1 ? "auto" : "100vh" }}>
 
         {props.store.quote === -1 ? <Header /> : ''}
         <Switch>
@@ -31,7 +30,7 @@ function App(props) {
         </Switch>
         {props.store.quote === -1 ? <Footer /> : ''}
       </div>
-    </Router>
+    </Router >
   );
 }
 

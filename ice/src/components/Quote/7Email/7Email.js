@@ -1,33 +1,24 @@
 import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
+import NextButton from '../../CustomComponents/NextButton';
 
-function NameEmail(props) {
+function Email(props) {
 
   let dispatch = useDispatch();
 
-  const sendInfo = (values, path) => {
-    switch (path) {
-      case 'forward':
-        dispatch({
-          type: 'UPDATE_CUSTOMER',
-          payload: values
-        });
-        dispatch({
-          type: 'QUOTE_PROGRESS',
-          payload: { divisor: 7, step_number: 1 }
-        });
-        props.history.push('./type-of-service');
-        break;
-      case 'back':
-        dispatch({
-          type: 'QUOTE_PROGRESS',
-          payload: { divisor: 7, step_number: 0 }
-        });
-        props.history.push('/');
-        break;
-      default:
-    }
+  const sendInfo = (values) => {
+    let step_number = props.store.quoteProgress.step_number;
+    dispatch({
+      type: 'UPDATE_CUSTOMER',
+      payload: values
+    });
+    dispatch({
+      type: 'QUOTE_PROGRESS',
+      payload: { divisor: 8, step_number: step_number + 1 }
+    });
+    props.history.push('./back-to-black');
   };
 
   return (
@@ -38,7 +29,7 @@ function NameEmail(props) {
       <p>So that we know who to call you and so that we can send you the details of your quote what is your email address?</p>
 
       <Formik
-        initialValues={{ email: '', name: '' }}
+        initialValues={{ email: '' }}
         validate={values => {
           const errors = {};
           if (!values.email) {
@@ -52,22 +43,17 @@ function NameEmail(props) {
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            sendInfo(values, 'forward');
+
+            sendInfo(values);
             setSubmitting(false);
           }, 400);
         }}
       >
         {({ isSubmitting }) => (
           <Form>
-            <Field type="email" name="email" />
+            <Field type="email" name="email" required />
             <ErrorMessage name="email" component="div" />
-            <Field type="name" name="name" required />
-            <ErrorMessage name="name" component="div" />
-            <button onClick={() => sendInfo('', 'back')}>Go home</button>
-            <button type="submit" disabled={isSubmitting}>
-              Go to type of service
-            </button>
+            <NextButton disabled={isSubmitting} />
           </Form>
         )}
       </Formik>
@@ -75,4 +61,4 @@ function NameEmail(props) {
   );
 }
 
-export default connect()(withRouter(NameEmail));
+export default connect(mapStoreToProps)(withRouter(Email));
