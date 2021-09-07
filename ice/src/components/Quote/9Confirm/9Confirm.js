@@ -22,12 +22,13 @@ function Confirm(props) {
   };
 
   return (
-    <div>
+    <div className='quoteStep_container'>
 
-      <h2>Does this look right to you?</h2>
-      <p>If so, please confirm.</p>
-      <button className='btn primary_btn' onClick={sendInfo}>Confirm</button>
-
+      <h2 className='quoteStep_container_title'>Does this look right to you?</h2>
+      <p className='quoteStep_container_descrip'>If so, please confirm.</p>
+      <div className='quoteStep_nextBtn_container'>
+        <button className='btn primary_btn' onClick={sendInfo}>Confirm</button>
+      </div>
     </div>
   );
 }

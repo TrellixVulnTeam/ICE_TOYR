@@ -67,10 +67,15 @@
   font-size: 18px;
   cursor: pointer;
   padding: 0;
+  transition: all 0.2s cubic-bezier(0.33, 0.66, 0.66, 1);
 
   .backButton_arrow {
     vertical-align: middle;
     margin-right: 5px;
   }
+}
+
+.backButton:hover {
+  color: $primary_dark_hover_color + cc;
 }
 // BACKBUTTON end

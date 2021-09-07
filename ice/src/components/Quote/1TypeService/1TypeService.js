@@ -5,11 +5,15 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { useEffect, useState } from 'react';
 import NextButton from '../../CustomComponents/NextButton';
 
+import Excavating from '../../../a_assets/images/Uncropped_Excavating.png';
+import Snowblower from '../../../a_assets/images/Uncropped_Snowblower.png';
+
 function TypeService(props) {
 
   let dispatch = useDispatch();
 
   const services = ['Snow Removal', 'Excavating'];
+  const pics = [Snowblower, Excavating];
   const [isChecked, setIsChecked] = useState('');
 
   useEffect(() => {
@@ -32,9 +36,7 @@ function TypeService(props) {
 
   return (
     <div className="quoteStep_container">
-      <h2>What type of service would you like?</h2>
-
-
+      <h2 className='quoteStep_container_title'>What type of service would you like?</h2>
       <Formik
         initialValues={{ service: '' }}
         validate={values => {
@@ -62,22 +64,27 @@ function TypeService(props) {
       >
         {({ isSubmitting }) => (
           <Form>
-            <div role="group" aria-labelledby="my-radio-group">
-              {services.map(s => (
-                <label key={s}>
-                  <Field
-                    type="radio"
-                    name="service"
-                    value={s}
-                    checked={isChecked === s}
-                    onClick={e => setIsChecked(e.target.value)}
-                  />
-                  {s}
-                </label>
+            <div className='quoteStep_optionsContainer' role="group" aria-labelledby="my-radio-group">
+              {services.map((s, i) => (
+                <div className='quoteStep_options'>
+                  <label key={s}>
+                    <p className='quoteStep_label'>{s}</p>
+                    <Field
+                      type="radio"
+                      name="service"
+                      value={s}
+                      checked={isChecked === s}
+                      onClick={e => setIsChecked(e.target.value)}
+                    />
+                    <img src={pics[i]} alt={s} className='quoteStep_label_img' />
+                  </label>
+                </div>
               ))}
             </div>
             <ErrorMessage name="service" component="div" />
-            <NextButton disabled={isSubmitting} />
+            <div className='quoteStep_nextBtn_container'>
+              <NextButton disabled={isSubmitting} />
+            </div>
           </Form>
         )}
       </Formik>

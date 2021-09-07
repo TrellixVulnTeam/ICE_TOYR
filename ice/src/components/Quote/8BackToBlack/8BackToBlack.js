@@ -21,13 +21,13 @@ function BackToBlack(props) {
   };
 
   return (
-    <div>
+    <div className='quoteStep_container'>
+      <h2 className='quoteStep_container_title'>Back to Black</h2>
+      <p className='quoteStep_container_descrip'>Consider our Back to Black service for premium support and service.</p>
 
-      <h2>Back to Black</h2>
-      <p>Consider our Back to Black service for premium support and service.</p>
-
-      <NextButton
-        click={sendInfo} />
+      <div className='quoteStep_nextBtn_container'>
+        <NextButton click={sendInfo} />
+      </div>
     </div>
   );
 }

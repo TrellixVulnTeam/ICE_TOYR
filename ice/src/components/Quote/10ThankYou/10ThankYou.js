@@ -14,12 +14,12 @@ function ThankYou(props) {
   };
 
   return (
-    <div>
-
-      <h2>Thank You</h2>
-      <p>Thank you for submitting this form!</p>
-      <button className='btn primary_btn' onClick={sendInfo}>Close Window</button>
-
+    <div className='quoteStep_container'>
+      <h2 className='quoteStep_container_title'>Thank You</h2>
+      <p className='quoteStep_container_descrip'>Thank you for submitting this form!</p>
+      <div className='quoteStep_nextBtn_container'>
+        <button className='btn primary_btn' onClick={sendInfo}>Close Window</button>
+      </div>
     </div>
   );
 }

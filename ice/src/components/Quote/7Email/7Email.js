@@ -22,11 +22,10 @@ function Email(props) {
   };
 
   return (
-    <div>
+    <div className='quoteStep_container'>
 
-      <h2>What is your name and email?</h2>
-      <p>We are happy you are interested in a getting a quote!</p>
-      <p>So that we know who to call you and so that we can send you the details of your quote what is your email address?</p>
+      <h2 className='quoteStep_container_title' >What is your name and email?</h2>
+      <p className='quoteStep_container_descrip'>We are happy you are interested in a getting a quote!<br></br>So that we know who to call you and so that we can send you the details of your quote what is your email address?</p>
 
       <Formik
         initialValues={{ email: '' }}
@@ -53,7 +52,9 @@ function Email(props) {
           <Form>
             <Field type="email" name="email" required />
             <ErrorMessage name="email" component="div" />
-            <NextButton disabled={isSubmitting} />
+            <div className='quoteStep_nextBtn_container'>
+              <NextButton disabled={isSubmitting} />
+            </div>
           </Form>
         )}
       </Formik>

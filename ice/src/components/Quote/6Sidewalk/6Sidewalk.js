@@ -4,12 +4,19 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { useEffect, useState } from 'react';
 import NextButton from '../../CustomComponents/NextButton';
+import Door from '../../../a_assets/images/door.png';
+import Close from '../../../a_assets/images/close.png';
 
 function Sidewalk(props) {
 
   let dispatch = useDispatch();
 
-  const sidewalk = ['1', '2', '3', 'none'];
+  const sidewalk1 = ['One Door', 'Two Doors'];
+  const sidewalk2 = ['Three Doors', 'None'];
+  const pics1 = [Door, Door];
+  const pics2 = [Door, Close];
+
+
   const [isChecked, setIsChecked] = useState('');
 
   useEffect(() => {
@@ -30,11 +37,9 @@ function Sidewalk(props) {
   };
 
   return (
-    <div>
-
-      <h2>Would you like us to shovel and salt any sidewalks?</h2>
-      <p>We charge for the amount of doors or locations we shovel to.
-        Examples: front door, back door, garbage cans, city sidewalk, etc.</p>
+    <div className="quoteStep_container">
+      <h2 className='quoteStep_container_title'>Would you like us to shovel and salt to any locations?</h2>
+      <p className='quoteStep_container_descrip'>We charge for the amount of doors or locations we shovel to.<br></br>Examples: front door, back door, garbage cans, city sidewalk, etc.</p>
 
       <Formik
         initialValues={{ sidewalk: '' }}
@@ -63,22 +68,44 @@ function Sidewalk(props) {
       >
         {({ isSubmitting }) => (
           <Form>
-            <div role="group" aria-labelledby="my-radio-group">
-              {sidewalk.map(s => (
-                <label key={s}>
-                  <Field
-                    type="radio"
-                    name="sidewalk"
-                    value={s}
-                    checked={isChecked === s}
-                    onClick={e => setIsChecked(e.target.value)}
-                  />
-                  {s}
-                </label>
+            <div className='quoteStep_optionsContainer qs_optionsContDriveway' role="group" aria-labelledby="my-radio-group">
+              {sidewalk1.map((s, i) => (
+                <div className='quoteStep_options qs_optionsdriveway'>
+                  <label key={s}>
+                    <p className='quoteStep_label'>{s}</p>
+                    <Field
+                      type="radio"
+                      name="sidewalk"
+                      value={s}
+                      checked={isChecked === s}
+                      onClick={e => setIsChecked(e.target.value)}
+                    />
+                    <img src={pics1[i]} alt={s} className='quoteStep_label_img qsdriveway' />
+                  </label>
+                </div>
+              ))}
+            </div>
+            <div className='quoteStep_optionsContainer qs_optionsContDriveway' role="group" aria-labelledby="my-radio-group">
+              {sidewalk2.map((s, i) => (
+                <div className='quoteStep_options qs_optionsdriveway'>
+                  <label key={s}>
+                    <p className='quoteStep_label'>{s}</p>
+                    <Field
+                      type="radio"
+                      name="sidewalk"
+                      value={s}
+                      checked={isChecked === s}
+                      onClick={e => setIsChecked(e.target.value)}
+                    />
+                    <img src={pics2[i]} alt={s} className='quoteStep_label_img qsdriveway' />
+                  </label>
+                </div>
               ))}
             </div>
             <ErrorMessage name="sidewalk" component="div" />
-            <NextButton disabled={isSubmitting} />
+            <div className='quoteStep_nextBtn_container'>
+              <NextButton disabled={isSubmitting} />
+            </div>
           </Form>
         )}
       </Formik>

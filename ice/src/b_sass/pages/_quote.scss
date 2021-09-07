@@ -9,8 +9,15 @@
   .quote_closeBtn {
     border: none;
     background-color: transparent;
-    font-size: 18px;
+    font-size: 16px;
+    margin-top: 10px;
+    text-decoration: underline;
     cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.33, 0.66, 0.66, 1);
+  }
+
+  .quote_closeBtn:hover {
+    color: $primary_dark_hover_color + cc;
   }
 
   .quote_backBtnPos {
@@ -31,5 +38,146 @@
 
   .quoteStep_container {
     min-height: 50vh;
+    margin-bottom: 95px;
+
+    .quoteStep_container_title {
+      text-align: center;
+    }
+
+    .quoteStep_container_descrip {
+      margin-bottom: 40px;
+    }
+
+    /* HIDE RADIO */
+    [type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* IMAGE STYLES */
+    [type="radio"] + img {
+      cursor: pointer;
+    }
+
+    /* CHECKED STYLES */
+    [type="radio"]:checked + img {
+      border: 4px solid $accent_dark_green;
+      border-radius: 10px;
+    }
+
+    .quoteStep_optionsContainer {
+      display: flex;
+      justify-content: space-evenly;
+      height: 220px;
+
+      .quoteStep_options {
+        width: 250px;
+        display: block;
+        .quoteStep_label {
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+        .quoteStep_label_img {
+          border-radius: 10px;
+          width: 250px;
+          height: 150px;
+          top: 0;
+          object-fit: cover;
+        }
+        .qsdriveway {
+          width: 60px;
+          height: 60px;
+        }
+      }
+
+      .qs_optionsdriveway {
+        width: 110px;
+      }
+    }
+
+    .qs_optionsContDriveway {
+      height: 160px;
+      .quoteStep_nextBtn_container {
+        margin-top: 30px;
+        float: right;
+      }
+    }
+
+    .quoteStep_textFormContainer {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 140px;
+
+      .quoteStep_textContainer {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .quoteStep_label {
+          font-size: 16px;
+          font-weight: 600;
+          color: #444444;
+          max-width: 150px;
+          text-align: left;
+        }
+        .quoteStep_text {
+          height: 40px;
+          border-radius: 4px;
+          border: 1px solid #c2c2c2;
+          background-color: #ffffff;
+          padding: 1px 5px;
+          font-size: 18px;
+          text-align: center;
+          align-self: center;
+          margin-top: 10px;
+        }
+
+        .quoteStep_name {
+          width: 200px;
+        }
+
+        .quoteStep_street {
+          max-width: 475px;
+          min-width: 300px;
+          margin-right: 20px;
+        }
+
+        .quoteStep_apt {
+          width: 130px;
+        }
+
+        .quoteStep_city {
+          width: 350px;
+          margin-right: 20px;
+        }
+
+        .quoteStep_state {
+          width: 260px;
+        }
+
+        .quoteStep_zipcode {
+          width: 160px;
+        }
+
+        .quoteStep_text:focus-visible {
+          outline-color: $accent_dark_green;
+        }
+      }
+    }
+
+    .quoteStep_singleTextFormContainer {
+      justify-content: center;
+      .quoteStep_singleText {
+        width: 100%;
+      }
+    }
+    .quoteStep_nextBtn_container {
+      margin-top: 30px;
+      float: right;
+    }
   }
 }

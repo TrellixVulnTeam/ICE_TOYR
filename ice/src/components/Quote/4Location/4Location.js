@@ -1,6 +1,6 @@
 import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import NextButton from '../../CustomComponents/NextButton';
 
@@ -21,61 +21,123 @@ function Location(props) {
     props.history.push('./driveway');
   };
 
+  const validate = values => {
+    const errors = {};
+
+    if (!values.street) {
+      errors.street = 'Required';
+    }
+
+    if (!values.city) {
+      errors.city = 'Required';
+    }
+
+    if (!values.state) {
+      errors.state = 'Required';
+    }
+
+    if (!values.zipcode) {
+      errors.zipcode = 'Required';
+    }
+    return errors;
+  };
+
+  let data = props.store.customerInfo;
+
+  const formik = useFormik({
+    initialValues: {
+      street: data.street === '' ? '' : data.street,
+      apartment: data.apartment === '' ? '' : data.apartment,
+      city: data.city === '' ? '' : data.city,
+      state: data.state === '' ? '' : data.state,
+      zipcode: data.zipcode === '' ? '' : data.zipcode,
+    },
+    validate,
+    onSubmit: (values) => {
+      sendInfo(values);
+    },
+  });
+
   return (
-    <div>
+    <div className="quoteStep_container">
 
-      <h2>What's your address?</h2>
-      <p>This info helps us verify the address is in our servicable area.</p>
+      <h2 className='quoteStep_container_title'>What's your address?</h2>
+      <p className='quoteStep_container_title'>This info helps us verify the address is in our servicable area.</p>
 
-      <Formik
-        initialValues={{ street: '', apartment: '', city: '', state: '', zipcode: '' }}
-        validate={values => {
-          const errors = {};
-          if (!values.street) {
-            console.log('got an error street');
-            errors.street = 'Required';
-          } else if (!values.apartment) {
-            console.log('got an error apartment');
-            errors.apartment = 'Required';
-          } else if (!values.city) {
-            console.log('got an error city');
-            errors.city = 'Required';
-          } else if (!values.state) {
-            console.log('got an error state');
-            errors.state = 'Required';
-          } else if (!values.zipcode) {
-            console.log('got an error zipcode');
-            errors.zipcode = 'Required';
-          }
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          console.log('hit onsubmit');
-
-          setTimeout(() => {
-
-            sendInfo(values);
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <Field type="text" name="street" />
-            <ErrorMessage name="street" component="div" />
-            <Field type="text" name="apartment" />
-            <ErrorMessage name="apartment" component="div" />
-            <Field type="text" name="city" />
-            <ErrorMessage name="city" component="div" />
-            <Field type="text" name="state" />
-            <ErrorMessage name="state" component="div" />
-            <Field type="text" name="zipcode" />
-            <ErrorMessage name="zipcode" component="div" />
-
-            <NextButton disabled={isSubmitting} />
-          </Form>
-        )}
-      </Formik>
+      <div>
+        <form onSubmit={formik.handleSubmit}>
+          <div className='quoteStep_textFormContainer'>
+            {/* Street */}
+            <div className='quoteStep_textContainer'>
+              <label className='quoteStep_label' htmlFor="street">Street</label>
+              <input
+                className='quoteStep_text quoteStep_street'
+                id="street"
+                name="street"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.street}
+              />
+              {formik.errors.street ? <div>{formik.errors.street}</div> : null}
+            </div>
+            {/* Apartment */}
+            <div className='quoteStep_textContainer'>
+              <label className='quoteStep_label' htmlFor="apartment">Apartment</label>
+              <input
+                className='quoteStep_text quoteStep_apt'
+                id="apartment"
+                name="apartment"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.apartment}
+              />
+              {formik.errors.apartment ? <div>{formik.errors.apartment}</div> : null}
+            </div>
+            {/* City */}
+            <div className='quoteStep_textContainer'>
+              <label className='quoteStep_label' htmlFor="city">City</label>
+              <input
+                className='quoteStep_text quoteStep_city'
+                id="city"
+                name="city"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.city}
+              />
+              {formik.errors.city ? <div>{formik.errors.city}</div> : null}
+            </div>
+            {/* State */}
+            <div className='quoteStep_textContainer'>
+              <label className='quoteStep_label' htmlFor="state">State</label>
+              <input
+                className='quoteStep_text quoteStep_state'
+                id="state"
+                name="state"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.state}
+              />
+              {formik.errors.state ? <div>{formik.errors.state}</div> : null}
+            </div>
+            {/* Zipcode */}
+            <div className='quoteStep_textContainer'>
+              <label className='quoteStep_label' htmlFor="zipcode">Zipcode</label>
+              <input
+                className='quoteStep_text quoteStep_zipcode'
+                id="zipcode"
+                name="zipcode"
+                type="number"
+                onChange={formik.handleChange}
+                value={formik.values.zipcode}
+              />
+              {formik.errors.zipcode ? <div>{formik.errors.zipcode}</div> : null}
+            </div>
+          </div>
+          <div className='quoteStep_nextBtn_container'>
+            <NextButton />
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

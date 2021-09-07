@@ -4,12 +4,16 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { useEffect, useState } from 'react';
 import NextButton from '../../CustomComponents/NextButton';
+import Residential from '../../../a_assets/images/residential_plowing.png';
+import Commercial from '../../../a_assets/images/commercial_plowing.png';
 
 function SubService(props) {
 
   let dispatch = useDispatch();
 
   const subServices = ['Residential', 'Commercial'];
+  const pics = [Residential, Commercial];
+
   const [isChecked, setIsChecked] = useState('');
 
   useEffect(() => {
@@ -26,11 +30,11 @@ function SubService(props) {
       type: 'QUOTE_PROGRESS',
       payload: { divisor: 8, step_number: step_number + 1 }
     });
-    props.history.push('./location');
+    props.history.push('./name');
   };
 
   return (
-    <div className='quote'>
+    <div className='quoteStep_container'>
 
       <h2>Is this for residential or commercial?</h2>
 
@@ -61,29 +65,30 @@ function SubService(props) {
       >
         {({ isSubmitting }) => (
           <Form>
-            <div role="group" aria-labelledby="my-radio-group">
-              {subServices.map(s => (
-                <label key={s}>
-                  <Field
-                    type="radio"
-                    name="subServices"
-                    value={s}
-                    checked={isChecked === s}
-                    onClick={e => setIsChecked(e.target.value)}
-                  />
-                  {s}
-                </label>
+            <div className='quoteStep_optionsContainer' role="group" aria-labelledby="my-radio-group">
+              {subServices.map((s, i) => (
+                <div className='quoteStep_options'>
+                  <label key={s}>
+                    <p className='quoteStep_label'>{s}</p>
+                    <Field
+                      type="radio"
+                      name="subServices"
+                      value={s}
+                      checked={isChecked === s}
+                      onClick={e => setIsChecked(e.target.value)}
+                    />
+                    <img src={pics[i]} alt={s} className='quoteStep_label_img' />
+                  </label>
+                </div>
               ))}
             </div>
             <ErrorMessage name="subServices" component="div" />
-            <NextButton disabled={isSubmitting} />
+            <div className='quoteStep_nextBtn_container'>
+              <NextButton disabled={isSubmitting} />
+            </div>
           </Form>
         )}
       </Formik>
-
-      <p>Hi, {props.store.customerInfo.name}!</p>
-
-
     </div>
   );
 }
