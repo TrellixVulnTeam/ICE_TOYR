@@ -16,7 +16,7 @@ function Location(props) {
     });
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 8, step_number: step_number + 1 }
+      payload: { divisor: 9, step_number: step_number + 1 }
     });
     props.history.push('./driveway');
   };
@@ -64,7 +64,7 @@ function Location(props) {
       <h2 className='quoteStep_container_title'>What's your address?</h2>
       <p className='quoteStep_container_title'>This info helps us verify the address is in our servicable area.</p>
 
-      <div>
+      <div className='quoteStep_formContainer'>
         <form onSubmit={formik.handleSubmit}>
           <div className='quoteStep_textFormContainer'>
             {/* Street */}

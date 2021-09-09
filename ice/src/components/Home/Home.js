@@ -38,16 +38,6 @@ function Home(props) {
   let description = "Are you looking for industry leading contractors that are reliable, quality, and fair priced? Well I guess we couldn't hide forever. See what ICE Contractors can do for your projects with a 2 minute quote!";
   // let quoteDescription = "Get a quote in under 2 minutes for your excavating, contracting and snow removal needs. Enter your zip code.";
 
-  // let customer = {
-  //   customer: {
-  //     customer_first_name: "Jane",
-  //     customer_last_name: "Doe",
-  //     customer_company_name: "Window Ltd",
-  //     customer_email: "janedoe@windowltd.com",
-  //     customer_category: "5f1a48d11289d5e82e798167",
-  //   },
-  // };
-
   let expectations = [
     {
       icon: ICE_Reliabiility,
@@ -102,7 +92,7 @@ function Home(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 8, step_number: 2 }
+      payload: { divisor: 9, step_number: 2 }
     });
     props.history.push('quote/name');
   }

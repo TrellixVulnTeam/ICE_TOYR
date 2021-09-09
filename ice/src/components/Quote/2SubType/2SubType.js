@@ -28,7 +28,7 @@ function SubService(props) {
     });
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 8, step_number: step_number + 1 }
+      payload: { divisor: 9, step_number: step_number + 1 }
     });
     props.history.push('./name');
   };
@@ -52,15 +52,12 @@ function SubService(props) {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-
-            if (props.store.customerInfo.subServices) {
-              sendInfo({ service: props.store.customerInfo.subServices }, 'forward');
-            } else {
-              sendInfo(values);
-            }
-            setSubmitting(false);
-          }, 400);
+          if (props.store.customerInfo.subServices) {
+            sendInfo({ service: props.store.customerInfo.subServices }, 'forward');
+          } else {
+            sendInfo(values);
+          }
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting }) => (

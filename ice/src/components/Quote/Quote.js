@@ -35,10 +35,19 @@ function Quote(props) {
       dispatch({
         type: 'UPDATE_CUSTOMER',
         payload: {
-          name: '',
-          email: '',
-          service: '',
-        },
+          apartment: "",
+          back_to_black: "",
+          city: "",
+          driveway: "",
+          email: "",
+          name: "",
+          service: "",
+          sidewalk: "",
+          state: "",
+          street: "",
+          subServices: "",
+          zipcode: "",
+        }
       });
     }
     loadCustomer();
@@ -47,7 +56,7 @@ function Quote(props) {
   const goForward = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 8, step_number: 0 }
+      payload: { divisor: 9, step_number: 0 }
     });
     props.history.push('/');
   }
@@ -56,7 +65,7 @@ function Quote(props) {
     let step_number = props.store.quoteProgress.step_number;
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 8, step_number: step_number - 1 }
+      payload: { divisor: 9, step_number: step_number - 1 }
     });
     history.goBack();
   }
@@ -64,9 +73,11 @@ function Quote(props) {
   return (
     <div className='quote'>
       <ProgressBar />
-      <div className='quote_backBtnPos'>
-        <BackButton click={goBack} />
-      </div>
+      {props.store.quoteProgress.step_number === 9 ? '' :
+        <div className='quote_backBtnPos'>
+          <BackButton click={goBack} />
+        </div>
+      }
 
       <Route exact path={`${props.match.path}/name`} component={Name} />
       <Route exact path={`${props.match.path}/type-of-service`} component={TypeService} />
@@ -78,10 +89,12 @@ function Quote(props) {
       <Route exact path={`${props.match.path}/back-to-black`} component={BackToBlack} />
       <Route exact path={`${props.match.path}/confirm`} component={Confirm} />
       <Route exact path={`${props.match.path}/thank-you`} component={ThankYou} />
-      <div className='quote_b231'>
-        <p>Not interested in your quote any more?</p>
-        <button className='quote_closeBtn' onClick={goForward}>Exit quote request </button>
-      </div>
+      {props.store.quoteProgress.step_number === 9 ? '' :
+        <div className='quote_b231'>
+          <p>Not interested in your quote any more?</p>
+          <button className='quote_closeBtn' onClick={goForward}>Exit quote request </button>
+        </div>
+      }
     </div>
 
   );

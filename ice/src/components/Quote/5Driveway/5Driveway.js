@@ -33,7 +33,7 @@ function Driveway(props) {
     });
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 8, step_number: step_number + 1 }
+      payload: { divisor: 9, step_number: step_number + 1 }
     });
     props.history.push('./sidewalk');
   };
@@ -56,15 +56,12 @@ function Driveway(props) {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-
-            if (props.store.customerInfo.driveway) {
-              sendInfo({ service: props.store.customerInfo.driveway }, 'forward');
-            } else {
-              sendInfo(values);
-            }
-            setSubmitting(false);
-          }, 400);
+          if (props.store.customerInfo.driveway) {
+            sendInfo({ service: props.store.customerInfo.driveway }, 'forward');
+          } else {
+            sendInfo(values);
+          }
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting }) => (

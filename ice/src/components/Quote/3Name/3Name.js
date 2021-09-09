@@ -18,7 +18,7 @@ function Name(props) {
     });
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 8, step_number: step_number + 1 }
+      payload: { divisor: 9, step_number: step_number + 1 }
     });
     props.history.push('./location');
   };
@@ -50,19 +50,21 @@ function Name(props) {
       <h2 className='quoteStep_container_title'>What is your first name?</h2>
       <p className='quoteStep_container_descrip'>We will use this for a more personalized experience throughout this quote.</p>
 
-      <div className='quoteStep_textFormContainer quoteStep_singleTextFormContainer'>
-        <form className='quoteStep_singleText' onSubmit={formik.handleSubmit}>
-          <div className='quoteStep_textContainer'>
-            <label className='quoteStep_label' htmlFor="name">First Name</label>
-            <input
-              className='quoteStep_text quoteStep_name'
-              id="name"
-              name="name"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.name}
-            />
-            {formik.errors.name ? <div>{formik.errors.name}</div> : null}
+      <div className='quoteStep_formContainer'>
+        <form onSubmit={formik.handleSubmit}>
+          <div className='quoteStep_textFormContainer'>
+            <div className='quoteStep_textContainer'>
+              <label className='quoteStep_label' htmlFor="name">First Name</label>
+              <input
+                className='quoteStep_text quoteStep_name'
+                id="name"
+                name="name"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.name}
+              />
+              {formik.errors.name ? <div>{formik.errors.name}</div> : null}
+            </div>
           </div>
           <div className='quoteStep_nextBtn_container'>
             <NextButton />

@@ -29,7 +29,7 @@ function TypeService(props) {
     });
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 8, step_number: step_number + 1 }
+      payload: { divisor: 9, step_number: step_number + 1 }
     });
     props.history.push('./sub-service');
   };
@@ -51,15 +51,12 @@ function TypeService(props) {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-
-            if (props.store.customerInfo.service) {
-              sendInfo({ service: props.store.customerInfo.service }, 'forward');
-            } else {
-              sendInfo(values);
-            }
-            setSubmitting(false);
-          }, 400);
+          if (props.store.customerInfo.service) {
+            sendInfo({ service: props.store.customerInfo.service }, 'forward');
+          } else {
+            sendInfo(values);
+          }
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting }) => (

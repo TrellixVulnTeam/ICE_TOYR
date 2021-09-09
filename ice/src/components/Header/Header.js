@@ -16,7 +16,7 @@ function Header(props) {
   const sendInfo = () => {
     dispatch({
       type: 'QUOTE_PROGRESS',
-      payload: { divisor: 8, step_number: 0 }
+      payload: { divisor: 9, step_number: 0 }
     });
     props.history.push('/quote/type-of-service');
   };
