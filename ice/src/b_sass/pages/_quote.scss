@@ -75,16 +75,20 @@
       height: 220px;
 
       .quoteStep_options {
-        width: 250px;
         display: block;
+        width: 50%;
+        max-width: 250px;
+        margin: 0 10px;
+
         .quoteStep_label {
           font-size: 18px;
           font-weight: 600;
           margin-bottom: 10px;
         }
+
         .quoteStep_label_img {
           border-radius: 10px;
-          width: 250px;
+          // width: 250px;
           height: 150px;
           top: 0;
           object-fit: cover;
@@ -115,7 +119,6 @@
       .quoteStep_textFormContainer {
         display: flex;
         flex-wrap: wrap;
-        margin: 0 140px;
         max-width: 700px;
 
         .quoteStep_textContainer {
