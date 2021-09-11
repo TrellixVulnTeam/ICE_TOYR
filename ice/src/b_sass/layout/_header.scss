@@ -1,13 +1,20 @@
+@import "../helpers/mixins.scss";
+
 .header {
   display: inline-flex;
   width: 100%;
   height: 70px;
   position: sticky;
   top: 0;
-  margin-left: -130px;
-  padding: 0 130px;
-  background-color: #FAFAFA;
+  margin-left: -10px;
+  padding: 0px 10px;
+  background-color: #fafafa;
   z-index: 999;
+
+  @include respond-to("small") {
+    margin-left: -130px;
+    padding: 0 130px;
+  }
 
   .header__b567 {
     display: inline-flex;
@@ -58,16 +65,16 @@
     height: 70px;
   }
 
-  .header__b284 > p{
-  font-family: OpenSans;
-  font-weight: 600;
-  font-size: 14px;
-  margin: 0;
-  cursor: pointer;
+  .header__b284 > p {
+    font-family: OpenSans;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+    cursor: pointer;
   }
 }
 
 .header.active {
-  background-color: #1E1E1E;
-  color: #FAFAFA;
+  background-color: #1e1e1e;
+  color: #fafafa;
 }

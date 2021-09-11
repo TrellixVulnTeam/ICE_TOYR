@@ -1,11 +1,24 @@
 @import "../components/components.scss";
+@import "../helpers/mixins.scss";
 
 .quote {
-  width: 80%;
+  width: 90%;
   margin: auto;
   background-color: #f9f9f9;
-  padding: 0 60px;
+  background-color: red;
+  padding: 0 10px;
   border-radius: 4px;
+  margin-top: 50px;
+
+  @include respond-to("x-small") {
+    padding: 0 30px;
+    margin-top: auto;
+  }
+
+  @include respond-to("small") {
+    padding: 0 60px;
+    width: 80%;
+  }
 
   .quote_closeBtn {
     border: none;
@@ -23,8 +36,13 @@
 
   .quote_backBtnPos {
     position: relative;
-    top: -68px;
-    float: left;
+    top: -28px;
+    float: unset;
+
+    @include respond-to("x-small") {
+      top: -68px;
+      float: left;
+    }
   }
 
   .email_i673 {
@@ -40,10 +58,17 @@
   .quoteStep_container {
     min-height: 50vh;
     margin-bottom: 95px;
+    margin-top: 30px;
+
+    @include respond-to("x-small") {
+      margin-top: 0;
+    }
 
     .quoteStep_container_title {
       text-align: center;
-      margin: 10px 100px;
+      margin: 10px 0px;
+      display: inline-block;
+      width: 100%;
     }
 
     .quoteStep_container_descrip {
@@ -73,6 +98,11 @@
       display: flex;
       justify-content: space-evenly;
       height: 220px;
+      margin-bottom: 20px;
+
+      @include respond-to("x-small") {
+        margin-bottom: 0;
+      }
 
       .quoteStep_options {
         display: block;
@@ -84,6 +114,11 @@
           font-size: 18px;
           font-weight: 600;
           margin-bottom: 10px;
+          height: 50px;
+
+          @include respond-to("x-small") {
+            height: unset;
+          }
         }
 
         .quoteStep_label_img {
@@ -117,9 +152,13 @@
       justify-content: center;
 
       .quoteStep_textFormContainer {
-        display: flex;
+        display: block;
         flex-wrap: wrap;
         max-width: 700px;
+
+        @include respond-to("x-small") {
+          display: flex;
+        }
 
         .quoteStep_textContainer {
           margin-top: 50px;
@@ -142,11 +181,15 @@
             padding: 1px 5px;
             font-size: 18px;
             text-align: left;
-            align-self: center;
+            align-self: left;
             padding: 0 8px;
             margin-top: 10px;
             margin-right: 20px;
             min-width: 50px;
+
+            @include respond-to("x-small") {
+              align-self: center;
+            }
           }
 
           .quoteStep_name {
@@ -155,7 +198,6 @@
 
           .quoteStep_street {
             max-width: 475px;
-            min-width: 300px;
           }
 
           .quoteStep_apt {
@@ -191,11 +233,23 @@
 
     // Back to Black
     .quoteStep_b2b_container {
-      display: flex;
+      display: block;
       justify-content: center;
 
+      @include respond-to("x-small") {
+        display: flex;
+      }
+
       .quoteStep_b2b_package_container {
-        width: 40%;
+        width: 100%;
+
+        @include respond-to("x-small") {
+          width: 50%;
+        }
+
+        @include respond-to("small") {
+          width: 40%;
+        }
 
         .quoteStep_subtitles {
           font-size: 20px;
@@ -205,6 +259,13 @@
         .quoteStep_b2b {
           text-align: left;
           border: $primary_dark_color solid 1px;
+          padding-right: 10px;
+          padding-left: 10px;
+
+          @include respond-to("x-large") {
+            padding-right: 0;
+            padding-left: 0;
+          }
 
           .b2n_btn_container {
             display: flex;
@@ -229,13 +290,20 @@
           margin: 15px 0;
           font-size: 18px;
           font-weight: 600;
-          height: 24px;
+          height: 44px;
+          @include respond-to("x-large") {
+            height: 24px;
+          }
         }
 
         .standard {
           color: $primary_dark_color;
           background-color: $primary_light_color;
-          border-radius: 24px 0px 0px 4px;
+          border-radius: 24px;
+
+          @include respond-to("x-small") {
+            border-radius: 24px 0px 0px 4px;
+          }
         }
 
         .no_item {
@@ -245,7 +313,11 @@
         .deluxe {
           background-color: $primary_dark_color;
           color: $primary_light_color;
-          border-radius: 0px 4px 24px 0px;
+          border-radius: 24px;
+
+          @include respond-to("x-small") {
+            border-radius: 4px 0px 24px 0px;
+          }
 
           .deluxe_item {
             list-style-type: square;

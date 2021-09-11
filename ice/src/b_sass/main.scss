@@ -68,5 +68,13 @@ p {
 .App {
   text-align: center;
   font-family: OpenSans;
-  padding: 0 130px;
+  padding: 0;
+
+  @include respond-to("x-small") {
+    padding: 0 10px;
+  }
+
+  @include respond-to("medium") {
+    padding: 0 130px;
+  }
 }
