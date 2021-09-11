@@ -2,7 +2,7 @@
   "name": "ice",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "https://affectionate-newton-e3d478.netlify.app",
   "comments": {
     "proxy": "taking this out for now proxy http://localhost:3000"
   },
