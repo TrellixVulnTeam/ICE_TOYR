@@ -7,7 +7,10 @@ import { withRouter } from 'react-router-dom';
 // import rightArrow from '../../a_assets/images/rightArrow.png';
 import Excavating from '../../a_assets/images/Excavating.png';
 import Snowblowing from '../../a_assets/images/Snowblower.png';
+import UnCroppedExcavating from '../../a_assets/images/Uncropped_Excavating.png';
+import UnCroppedSnowblowing from '../../a_assets/images/Uncropped_Snowblower.png';
 import star from '../../a_assets/images/star1.png';
+import map from '../../a_assets/images/ICE_where_we_serve.png';
 
 // Expectations assets
 import ICE_Customer_Exp from '../../a_assets/images/ICE_Customer_Exp.png';
@@ -74,20 +77,6 @@ function Home(props) {
 
 
   const [active, setActive] = useState('notActive');
-  // const [zipcode, setZipcode] = useState('');
-
-  // const beginQuote = () => {
-  //   console.log('in begin quote and showing zipcode', zipcode);
-  //   createCustomer();
-  // }
-
-  // const createCustomer = () => {
-  //   console.log('in createCustomer');
-  //   dispatch({
-  //     type: 'ADD_CUSTOMER',
-  //     payload: customer
-  //   });
-  // };
 
   const goForward = () => {
     dispatch({
@@ -118,12 +107,18 @@ function Home(props) {
           onMouseLeave={() => setActive('notActive')}
         >
           <img
-            className='home__b__b--i478'
+            className='home__b__b--i478 homeAboveXSmall'
             src={Snowblowing}
             alt='snowblowing'
             onClick={goForward}
           />
           <p className='home__b__b--i416'>Snow Removal</p>
+          <img
+            className='home__b__b--i478 homeBelowXSmall'
+            src={UnCroppedSnowblowing}
+            alt='snowblowing'
+            onClick={goForward}
+          />
         </div>
         <div
           className={active === 'excavatingActive' || active === 'notActive' ? 'home__b__b198' : 'home__b__b198 path-active'}
@@ -131,12 +126,18 @@ function Home(props) {
           onMouseLeave={() => setActive('notActive')}
         >
           <img
-            className='home__b__b--i618'
+            className='home__b__b--i618 homeAboveXSmall'
             src={Excavating}
             alt='excavating'
             onClick={goForward}
           />
           <p className='home__b__b--i785'>Excavation</p>
+          <img
+            className='home__b__b--i618 homeBelowXSmall'
+            src={UnCroppedExcavating}
+            alt='excavating'
+            onClick={goForward}
+          />
         </div>
       </div>
       <div className='home__b226'>
@@ -154,17 +155,6 @@ function Home(props) {
               :
               ''
           )}
-        </div>
-        <div className='home__b__b405'>
-          {expectations.length - 1 === 6 ?
-            <div className='home__b__b__b664'>
-              <img className='home__b__b__b--i311' src={expectations[6].icon} alt='' />
-              <h3 className='home__b__b__b__b553'>{expectations[6].title}</h3>
-              <p className='home__b__b__b__b404'>{expectations[6].description}</p>
-            </div>
-            :
-            ''
-          }
         </div>
       </div>
       <div className='home_b808'>
@@ -187,7 +177,21 @@ function Home(props) {
             )}
         </div>
       </div>
-      <div id="mapid"></div>
+      <div className='home_b612'>
+        <h3 className='home_b_b591'>Where We Serve</h3>
+        <p className='home_b_b156'>Our primary service area is Minneapolis and the greater Twin Cities</p>
+        <div className='home_b_b388'>
+          <img className='home_b_b_b274' src={map} alt='map of minneapolis' />
+        </div>
+        <div className='home_b_b_b554'>
+          <h3 className='home_b_b_b_b821'>Don't see your town?</h3>
+          <p className='home_b_b_b_b556'>Give us a call or fill out our contact form to see if we service your area!</p>
+          <div className='home_b_b_b_b644'>
+            <button className='btn secondary_btn'>Call us</button>
+            <button className='btn primary_btn'>Send a message</button>
+          </div>
+        </div>
+      </div>
     </div >
   );
 }

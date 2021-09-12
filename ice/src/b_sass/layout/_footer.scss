@@ -1,60 +1,53 @@
 .footer {
+  margin: 0 -10px;
+  @include respond-to("medium") {
+    margin: 0 -130px;
+  }
+  color: $primary_light_color;
+
   .footer__b780 {
     display: inline-flex;
     position: relative;
-    margin-top: 100px;
     left: 0;
     cursor: pointer;
     height: min-content;
+    background-color: #ffffff;
 
     .footer__b__b759 {
-      margin-right: 21px;
+      background-image: linear-gradient(transparent, $primary_dark_color);
+      position: relative;
+      $pictureAdjust: -98px;
+      bottom: $pictureAdjust;
+      margin-top: $pictureAdjust;
+
+      @include respond-to("x-small") {
+        $pictureAdjust: -208px;
+        bottom: $pictureAdjust;
+        margin-top: $pictureAdjust;
+      }
 
       .footer__b__b__b700 {
-        font-family: Electrical;
-        font-style: normal;
-        font-weight: normal;
-        margin: 0;
-        font-size: 60px;
-        line-height: 69px;
-        letter-spacing: 0.2em;
-      }
-    }
-    .footer__b__b892 {
-      text-align: left;
-      position: relative;
-      top: 12.5px;
-      height: 100%;
-      width: 260px;
-      
-      .footer__b__b__b397 {
-        font-family: Dhurjati;
-        margin: 0;
-        align-items: center;
-        display: flex;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 28px;
-        line-height: 80%;
-      }
-      .footer__b__b__b256 {
-        background-color: transparent;
+        border-radius: 4px;
       }
     }
   }
-  .footer__b538 {
-    display: inline-flex;
 
-    .footer__b__b141 {
-      max-width: 451px;
+  .footer__b538 {
+    display: flex;
+    justify-content: space-evenly;
+    z-index: 1;
+    margin-bottom: 40px;
+
+    @include respond-to("x-small") {
+      margin-bottom: 80px;
     }
+
     .footer__b__b340 {
       margin-left: 50px;
       min-width: 134px;
       text-align: left;
       font-size: 14px;
       line-height: 18px;
-      letter-spacing: -0.03em;
 
       .footer__b__b__b256 {
         margin-top: 14px;
@@ -64,16 +57,25 @@
       margin-left: 20px;
 
       .footer__b__b--i413 {
-
-      }
-      .footer__b__b187 {
-        margin-top: 80px;
-        width: 400px;
+        padding: 15px 30px;
+        font-size: 20px;
       }
     }
   }
   .footer__b798 {
-    text-align: left;
+    z-index: 1;
+    height: 82px;
+    margin-top: -29px;
+    background-color: $primary_dark_color;
+    padding-top: 20px;
+
+    @include respond-to("x-small") {
+      margin: auto;
+      height: unset;
+      margin-top: unset;
+      background-color: unset;
+      padding-top: unset;
+    }
 
     .footer__b__b874 {
       font-size: 14px;
