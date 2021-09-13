@@ -34,6 +34,27 @@ function Home(props) {
       type: 'CHECK_FOR_QUOTE',
       payload: pathname
     });
+
+    const loadCustomer = () => {
+      dispatch({
+        type: 'UPDATE_CUSTOMER',
+        payload: {
+          apartment: "",
+          back_to_black: "",
+          city: "",
+          driveway: "",
+          email: "",
+          name: "",
+          service: "",
+          sidewalk: "",
+          state: "",
+          street: "",
+          subServices: "",
+          zipcode: "",
+        }
+      });
+    }
+    loadCustomer();
   }, [dispatch]);
 
 
@@ -78,7 +99,14 @@ function Home(props) {
 
   const [active, setActive] = useState('notActive');
 
-  const goForward = () => {
+  const goForward = (type) => {
+    let packagetype = { "service": type }
+    console.log('here is my type', packagetype);
+
+    dispatch({
+      type: 'UPDATE_CUSTOMER',
+      payload: packagetype
+    });
     dispatch({
       type: 'QUOTE_PROGRESS',
       payload: { divisor: 9, step_number: 2 }
@@ -110,14 +138,14 @@ function Home(props) {
             className='home__b__b--i478 homeAboveXSmall'
             src={Snowblowing}
             alt='snowblowing'
-            onClick={goForward}
+            onClick={() => goForward('Snow Removal')}
           />
           <p className='home__b__b--i416'>Snow Removal</p>
           <img
             className='home__b__b--i478 homeBelowXSmall'
             src={UnCroppedSnowblowing}
             alt='snowblowing'
-            onClick={goForward}
+            onClick={() => goForward('Snow Removal')}
           />
         </div>
         <div
@@ -129,14 +157,14 @@ function Home(props) {
             className='home__b__b--i618 homeAboveXSmall'
             src={Excavating}
             alt='excavating'
-            onClick={goForward}
+            onClick={() => goForward('Excavating')}
           />
           <p className='home__b__b--i785'>Excavation</p>
           <img
             className='home__b__b--i618 homeBelowXSmall'
             src={UnCroppedExcavating}
             alt='excavating'
-            onClick={goForward}
+            onClick={() => goForward('Excavating')}
           />
         </div>
       </div>

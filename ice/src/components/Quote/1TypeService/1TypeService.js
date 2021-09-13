@@ -21,6 +21,7 @@ function TypeService(props) {
   }, [props.store.customerInfo.service]);
 
   const sendInfo = (values) => {
+
     let step_number = props.store.quoteProgress.step_number;
 
     dispatch({

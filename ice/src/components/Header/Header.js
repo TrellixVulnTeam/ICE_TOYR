@@ -35,7 +35,7 @@ function Header(props) {
       <div className='header__b284'>
         <p onClick={() => props.history.push('/services')}>Services</p>
         <p onClick={sendInfo}>Get a Quote</p>
-        <p onClick={() => props.history.push('/login')}>Log in</p>
+        {/* <p onClick={() => props.history.push('/login')}>Log in</p> */}
       </div>
     </div>
   );

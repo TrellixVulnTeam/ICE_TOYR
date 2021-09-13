@@ -34,9 +34,6 @@ function Footer(props) {
           >Get a Quote</button>
         </div>
       </div>
-      {/* <div className='footer__b803'>
-
-      </div> */}
       <div className='footer__b798'>
         <p className='footer__b__b874'>Copyright © 2021. All rights reserved.</p>
         <p className='footer__b__b874'>Designed by AB.UXD. Developed by Justus Witmer.</p>

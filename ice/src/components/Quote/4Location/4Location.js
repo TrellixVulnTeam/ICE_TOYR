@@ -18,6 +18,7 @@ function Location(props) {
       type: 'QUOTE_PROGRESS',
       payload: { divisor: 9, step_number: step_number + 1 }
     });
+
     props.history.push('./driveway');
   };
 

@@ -104,6 +104,7 @@
       left: 50%;
       transform: translate(-50%);
       max-width: 1192px;
+      height: 100%;
     }
 
     .home__b__b746 {
@@ -123,7 +124,7 @@
 
         @include respond-to("x-small") {
           position: relative;
-          top: -125%;
+          top: -200%;
           left: -40px;
           text-align: right;
           color: #1e1e1e;
@@ -180,7 +181,7 @@
 
         @include respond-to("x-small") {
           position: relative;
-          top: -125%;
+          top: -200%;
           left: -40px;
           text-align: right;
           color: #fafafa;
@@ -282,6 +283,7 @@
     @include respond-to("medium") {
       margin: 0 -130px;
       padding: 0 130px;
+      padding-bottom: 30px;
     }
 
     .home_b__b396 {
