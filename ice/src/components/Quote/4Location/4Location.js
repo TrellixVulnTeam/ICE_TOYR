@@ -14,12 +14,19 @@ function Location(props) {
       type: 'UPDATE_CUSTOMER',
       payload: values
     });
-    dispatch({
-      type: 'QUOTE_PROGRESS',
-      payload: { divisor: 9, step_number: step_number + 1 }
-    });
-
-    props.history.push('./driveway');
+    if (props.store.customerInfo.service === 'Excavating') {
+      dispatch({
+        type: 'QUOTE_PROGRESS',
+        payload: { divisor: 9, step_number: 8 }
+      });
+      props.history.push('./confirm');
+    } else {
+      dispatch({
+        type: 'QUOTE_PROGRESS',
+        payload: { divisor: 9, step_number: step_number + 1 }
+      });
+      props.history.push('./driveway');
+    }
   };
 
   const validate = values => {

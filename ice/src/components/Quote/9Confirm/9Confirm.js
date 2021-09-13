@@ -97,10 +97,12 @@ function Confirm(props) {
         </div>
         <h3>Services you requested</h3>
         <div className='quote_confirm_item_container'>
-          <p>Type service: <span>{data.subServices}</span></p>
-          <p>Type of driveway: <span>{data.driveway}</span></p>
-          <p>Number of locations to shovel to: <span>{data.sidewalk}</span></p>
-          <p>Back to Black service: <span>{data.back_to_black}</span></p>
+          <p>Type service: <span>{data.service}</span></p>
+          {data.service === "Excavating" ? '' : <>
+            <p>Type of driveway: <span>{data.driveway}</span></p>
+            <p>Number of locations to shovel to: <span>{data.sidewalk}</span></p>
+            <p>Back to Black service: <span>{data.back_to_black}</span></p>
+          </>}
         </div>
       </div>
       <div className='quoteStep_nextBtn_container'>

@@ -27,9 +27,6 @@ function Home(props) {
 
   useEffect(() => {
     let pathname = document.URL.search('/quote');
-    // dispatch({
-    //   type: 'FETCH_CUSTOMER',
-    // });
     dispatch({
       type: 'CHECK_FOR_QUOTE',
       payload: pathname
@@ -100,12 +97,10 @@ function Home(props) {
   const [active, setActive] = useState('notActive');
 
   const goForward = (type) => {
-    let packagetype = { "service": type }
-    console.log('here is my type', packagetype);
 
     dispatch({
       type: 'UPDATE_CUSTOMER',
-      payload: packagetype
+      payload: { "service": type }
     });
     dispatch({
       type: 'QUOTE_PROGRESS',

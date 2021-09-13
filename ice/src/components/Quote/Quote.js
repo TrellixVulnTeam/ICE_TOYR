@@ -30,27 +30,6 @@ function Quote(props) {
       type: 'CHECK_FOR_QUOTE',
       payload: pathname
     });
-
-    const loadCustomer = () => {
-      dispatch({
-        type: 'UPDATE_CUSTOMER',
-        payload: {
-          apartment: "",
-          back_to_black: "",
-          city: "",
-          driveway: "",
-          email: "",
-          name: "",
-          service: "",
-          sidewalk: "",
-          state: "",
-          street: "",
-          subServices: "",
-          zipcode: "",
-        }
-      });
-    }
-    loadCustomer();
   }, [dispatch]);
 
   const goForward = () => {

@@ -39,6 +39,7 @@
 // };
 
 const updateCustomerReducer = (state = [], action) => {
+  console.log('hit cuustomer reducer', action);
   switch (action.type) {
     case 'UPDATE_CUSTOMER':
       return { ...state, ...action.payload };
