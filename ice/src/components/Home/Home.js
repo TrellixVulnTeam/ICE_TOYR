@@ -11,6 +11,7 @@ import UnCroppedExcavating from '../../a_assets/images/Uncropped_Excavating.png'
 import UnCroppedSnowblowing from '../../a_assets/images/Uncropped_Snowblower.png';
 import star from '../../a_assets/images/star1.png';
 import map from '../../a_assets/images/ICE_where_we_serve.png';
+import RegBtn from '../CustomComponents/RegButton';
 
 // Expectations assets
 import ICE_Customer_Exp from '../../a_assets/images/ICE_Customer_Exp.png';
@@ -115,6 +116,10 @@ function Home(props) {
       <div className='home__b491'>
         <h2 className='home__b--i974'>{title}</h2>
         <p className='home__b--i230'>{description}</p>
+        <RegBtn
+          title='Get your Quote!'
+          click='/quote/type-of-service'
+        />
         <div className='home__b__b516'>
           {/* <p className='home__b__b--i900'>{quoteDescription}</p>
           <div className='home__b__b__b912'>
