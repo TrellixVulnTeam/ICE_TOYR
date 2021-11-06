@@ -10,9 +10,9 @@
       max-width: 680px;
       margin: auto;
       height: 54px;
-      font-family: OpenSansBold;
+      font-family: "OpenSan";
       margin-top: 87px;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 40px;
       line-height: 54px;
       margin-bottom: 80px;
@@ -226,13 +226,11 @@
     margin-bottom: 150px;
 
     .home__b__b512 {
-      font-weight: 800;
-      font-size: 30px;
-      margin: 50px 0;
+      margin: 50px 0 50px 0;
       padding: 0 50px;
 
       @include respond-to("x-small") {
-        margin: 0 0 50px 0;
+        margin-top: unset;
         padding: 0;
       }
     }
@@ -251,21 +249,26 @@
         width: 326px;
 
         .home__b__b__b__b436 {
-          max-width: 100px;
+          margin: auto;
+          img {
+            width: unset;
+            height: 100px;
+            box-shadow: 0px 0px 20px 10px #d3d3d35e;
+            padding: 10px;
+            background-color: #d3d3d35e;
+          }
         }
 
         .home__b__b__b__b991 {
           font-weight: bold;
           font-size: 24px;
           line-height: 33px;
-          text-align: left;
         }
 
         .home__b__b__b__b419 {
           font-weight: normal;
           font-size: 18px;
           line-height: 25px;
-          text-align: left;
         }
       }
     }
@@ -275,25 +278,16 @@
     background-color: #1e1e1e;
     color: #fafafa;
     margin: 0 -10px;
-    padding: 0 50px;
-
-    @include respond-to("x-small") {
-      padding: 0;
-    }
+    padding: 50px 50px;
 
     @include respond-to("medium") {
       margin: 0 -130px;
-      padding: 0 130px;
-      padding-bottom: 30px;
+      padding: 50px 130px;
     }
 
     .home_b__b396 {
-      margin-bottom: 123px;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 26px;
-      line-height: 35px;
-      letter-spacing: -0.03em;
+      margin-bottom: 80px;
+      font-size: 24px;
     }
 
     .home_b__b425 {

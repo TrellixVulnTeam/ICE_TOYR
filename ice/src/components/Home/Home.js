@@ -88,7 +88,7 @@ function Home(props) {
     },
     {
       icon: ICE_Customer_Exp,
-      title: 'Customer Experience Guarantee',
+      title: 'Customer Satisfaction',
       description: 'We care about every aspect of our service. If you aren\'t happy, we will make it right!',
     }
   ];
@@ -187,11 +187,13 @@ function Home(props) {
       </div>
       <div className='home_b808'>
         <h3 className='home_b__b547'>Proven Satisfaction</h3>
-        <p className='home_b__b396'>Don’t take our word for it, see our reviews on these popular sites</p>
+        <p className='home_b__b396'>Don’t take our word for it, see our reviews on Thumbtack</p>
         <div className='home_b__b425'>
-          {[{ name: 'Google', link: 'https://www.google.com' },
-          { name: 'Thumbtack', link: 'https://www.thumbtack.com' },
-          { name: 'Home Advisor', link: 'https://www.homeadvisor.com' }]
+          {[
+            // { name: 'Google', link: 'https://www.google.com' },
+            { name: 'Thumbtack', link: 'https://www.thumbtack.com' },
+            // { name: 'Home Advisor', link: 'https://www.homeadvisor.com' }
+          ]
             .map(i =>
               <div key={i.name} className='home_b__b__b855'>
                 <div className='home_b__b__b__b972'>

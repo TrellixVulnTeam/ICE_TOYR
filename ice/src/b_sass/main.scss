@@ -22,12 +22,6 @@
 // *************** Global *************** //
 // such as fonts, global formatting, etc.
 
-/* sourced from https://fonts.google.com/specimen/Open+Sans */
-@font-face {
-  font-family: "OpenSans";
-  src: url("../a_assets/fonts/OpenSans/OpenSans-Regular.ttf");
-}
-
 /* sourced font from https://www.dafont.com/electrical.font */
 @font-face {
   font-family: "Electrical";
@@ -44,12 +38,21 @@
 @font-face {
   font-family: "OpenSans";
   src: url("../a_assets/fonts/OpenSans/OpenSans-Regular.ttf");
+  font-weight: 400;
 }
 
 /* sourced from https://fonts.google.com/specimen/Open+Sans */
 @font-face {
-  font-family: "OpenSansBold";
+  font-family: "OpenSans";
   src: url("../a_assets/fonts/OpenSans/OpenSans-Bold.ttf");
+  font-weight: 700;
+}
+
+/* sourced from https://fonts.google.com/specimen/Open+Sans */
+@font-face {
+  font-family: "OpenSans";
+  src: url("../a_assets/fonts/OpenSans/OpenSans-ExtraBold.ttf");
+  font-weight: 900;
 }
 
 body {
@@ -63,6 +66,11 @@ img {
 p {
   margin: 0;
   padding: 0;
+}
+
+h3 {
+  font-size: 30px;
+  font-weight: 700;
 }
 
 .App {
