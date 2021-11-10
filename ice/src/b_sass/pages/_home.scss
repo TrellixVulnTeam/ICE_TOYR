@@ -330,6 +330,13 @@
             letter-spacing: -0.03em;
             text-decoration-line: underline;
             color: #fafafa;
+            display: flex;
+            align-items: center;
+
+            img {
+              width: 12px;
+              margin-left: 6px;
+            }
           }
         }
       }
@@ -356,6 +363,8 @@
 
     .home_b_b388 {
       .home_b_b_b274 {
+        width: 80%;
+        border-radius: 8px;
       }
     }
 
@@ -392,6 +401,11 @@
         display: flex;
         justify-content: space-evenly;
         margin-top: 30px;
+
+        a {
+          text-decoration: unset;
+          color: unset;
+        }
       }
     }
     .home_b_b_b554:hover {

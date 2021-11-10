@@ -3,15 +3,16 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
-// import rightArrow from '../../a_assets/images/rightArrow.png';
 import Excavating from '../../a_assets/images/Excavating.png';
 import Snowblowing from '../../a_assets/images/Snowblower.png';
 import UnCroppedExcavating from '../../a_assets/images/Uncropped_Excavating.png';
 import UnCroppedSnowblowing from '../../a_assets/images/Uncropped_Snowblower.png';
 import star from '../../a_assets/images/star1.png';
 import map from '../../a_assets/images/ICE_where_we_serve.png';
-import RegBtn from '../CustomComponents/RegButton';
+import externalLink from "../../a_assets/images/angledArrowWhite.png";
+
 
 // Expectations assets
 import ICE_Customer_Exp from '../../a_assets/images/ICE_Customer_Exp.png';
@@ -20,7 +21,9 @@ import ICE_Profess_Serv from '../../a_assets/images/ICE_Profess_Serv.png';
 import ICE_Reliabiility from '../../a_assets/images/ICE_Reliabiility.png';
 import ICE_Transparency from '../../a_assets/images/ICE_Transparency.png';
 import ICE_Honest_Pricing from '../../a_assets/images/ICE_Honest_Pricing.png';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+
+import ICEBtn from '../CustomComponents/ICEBtn';
+import Modal from '../CustomComponents/Modal';
 
 function Home(props) {
 
@@ -110,13 +113,12 @@ function Home(props) {
     props.history.push('quote/name');
   }
 
-
   return (
     <div className='home'>
       <div className='home__b491'>
         <h2 className='home__b--i974'>{title}</h2>
         <p className='home__b--i230'>{description}</p>
-        <RegBtn
+        <ICEBtn
           title='Get your Quote!'
           click='/quote/type-of-service'
         />
@@ -202,7 +204,17 @@ function Home(props) {
                   )}
                 </div>
                 <p className='home_b__b__b__b663'>5 stars on {i.name}</p>
-                <p className='home_b__b__b__b184'><a className='home_b__b__b__b--i196' href={i.link}>See Reviews</a></p>
+                {/* Cautions about having links open in new tabs
+                  https://www.thesitewizard.com/html-tutorial/open-links-in-new-window-or-tab.shtml */}
+                <p className='home_b__b__b__b184'>
+                  <a
+                    className='home_b__b__b__b--i196'
+                    href={i.link} rel="noopener noreferrer"
+                    target="_blank">
+                    See Reviews
+                    <img src={externalLink} alt='external link' />
+                  </a>
+                </p>
               </div>
             )}
         </div>
@@ -217,8 +229,18 @@ function Home(props) {
           <h3 className='home_b_b_b_b821'>Don't see your town?</h3>
           <p className='home_b_b_b_b556'>Give us a call or fill out our contact form to see if we service your area!</p>
           <div className='home_b_b_b_b644'>
-            <button className='btn secondary_btn'>Call us</button>
-            <button className='btn primary_btn'>Send a message</button>
+            <Modal
+              btnStyle="Secondary"
+              // title="Hiyo"
+              content="Call us at 612-9000-423"
+              btnText="Call us"
+            />
+            <button className='btn primary_btn'><a href='mailto:info@icecontractormn.com'>Send a message</a></button>
+            {/* <ICEBtn
+              title="Hiyo"
+              content="send us a message at info@icecontractormn.com"
+              btnText="Send a message"
+            /> */}
           </div>
         </div>
       </div>
