@@ -56,7 +56,10 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 8px;
+  @include respond-to("x-small") {
+    margin: 0;
+  }
 }
 
 img {

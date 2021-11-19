@@ -33,6 +33,7 @@ function SubService(props) {
     props.history.push('./name');
   };
 
+
   return (
     <div className='quoteStep_container'>
 
@@ -64,8 +65,8 @@ function SubService(props) {
           <Form>
             <div className='quoteStep_optionsContainer' role="group" aria-labelledby="my-radio-group">
               {subServices.map((s, i) => (
-                <div className='quoteStep_options'>
-                  <label key={s}>
+                <div key={s} className='quoteStep_options'>
+                  <label>
                     <p className='quoteStep_label'>{s}</p>
                     <Field
                       type="radio"

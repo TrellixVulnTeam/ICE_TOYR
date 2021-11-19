@@ -64,8 +64,8 @@ function TypeService(props) {
           <Form>
             <div className='quoteStep_optionsContainer' role="group" aria-labelledby="my-radio-group">
               {services.map((s, i) => (
-                <div className='quoteStep_options'>
-                  <label key={s}>
+                <div key={s} className='quoteStep_options'>
+                  <label >
                     <p className='quoteStep_label'>{s}</p>
                     <Field
                       type="radio"

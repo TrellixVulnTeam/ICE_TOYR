@@ -189,12 +189,12 @@ function Home(props) {
       </div>
       <div className='home_b808'>
         <h3 className='home_b__b547'>Proven Satisfaction</h3>
-        <p className='home_b__b396'>Don’t take our word for it, see our reviews on Thumbtack</p>
+        <p className='home_b__b396'>Don’t take our word for it, check out some of our reviews.</p>
         <div className='home_b__b425'>
           {[
             // { name: 'Google', link: 'https://www.google.com' },
-            { name: 'Thumbtack', link: 'https://www.thumbtack.com' },
-            // { name: 'Home Advisor', link: 'https://www.homeadvisor.com' }
+            // { name: 'Thumbtack', link: 'https://www.thumbtack.com' },
+            { name: 'Home Advisor', link: 'https://www.homeadvisor.com/rated.IsernanContracting.111728459.html' }
           ]
             .map(i =>
               <div key={i.name} className='home_b__b__b855'>
@@ -232,7 +232,7 @@ function Home(props) {
             <Modal
               btnStyle="Secondary"
               // title="Hiyo"
-              content="Call us at 612-9000-423"
+              content="Call us at 612-900-0423"
               btnText="Call us"
             />
             <button className='btn primary_btn'><a href='mailto:info@icecontractormn.com'>Send a message</a></button>

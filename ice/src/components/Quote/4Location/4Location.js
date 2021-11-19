@@ -20,6 +20,15 @@ function Location(props) {
         payload: { divisor: 9, step_number: 8 }
       });
       props.history.push('./confirm');
+    }
+    // If commercial is selected skip past the driveway and sidewalk steps
+    else if (props.store.customerInfo.subServices === 'Commercial') {
+      console.log('we got commercial!!!');
+      dispatch({
+        type: 'QUOTE_PROGRESS',
+        payload: { divisor: 9, step_number: step_number + 3 }
+      });
+      props.history.push('./email');
     } else {
       dispatch({
         type: 'QUOTE_PROGRESS',

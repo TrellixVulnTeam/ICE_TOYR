@@ -7,6 +7,7 @@ import Home from './components/Home/Home';
 import Services from './components/Services/Services';
 import Login from './components/Login/Login';
 import Contact from './components/Contact/Contact';
+import TestColors from './components/TestColors/TestColors';
 
 // Quote Components
 import Quote from './components/Quote/Quote';
@@ -27,6 +28,8 @@ function App(props) {
           <Route exact path={'/login'} component={Login} />
           <Route path={'/quote'} component={Quote} />
           <Route exact path='/contact' component={Contact} />
+
+          {/* <Route exact path={'/testColors'} component={TestColors} /> */}
         </Switch>
         {props.store.quote === -1 ? <Footer /> : ''}
       </div>

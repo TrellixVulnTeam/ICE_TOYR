@@ -58,9 +58,24 @@ function Quote(props) {
         </div>
       }
 
-      <Route exact path={`${props.match.path}/name`} component={Name} />
+      {/* Order of steps:
+      Residential       | Commercial
+      .                 |
+      Type of service   | Type of service
+      Sub Type          | SubType
+      Name              | Name
+      Location          | Location
+      Driveway          |
+      Sidewalk          |
+      Email             | Email
+      BacktoBlack       | BacktoBlack
+      Confirm           | Confirm
+      Thank you         | Thank you
+      */}
+
       <Route exact path={`${props.match.path}/type-of-service`} component={TypeService} />
       <Route exact path={`${props.match.path}/sub-service`} component={SubType} />
+      <Route exact path={`${props.match.path}/name`} component={Name} />
       <Route exact path={`${props.match.path}/location`} component={Location} />
       <Route exact path={`${props.match.path}/driveway`} component={Driveway} />
       <Route exact path={`${props.match.path}/sidewalk`} component={Sidewalk} />

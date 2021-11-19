@@ -1,10 +1,12 @@
 import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import logo from '../../a_assets/images/ICE_official_logo.png';
+import logo from '../../a_assets/images/ICE_official_logo.webp';
+import logoMobile from '../../a_assets/images/ICE_official_logo-mobile.webp';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 function Footer(props) {
 
+  let w = window.innerWidth;
   let dispatch = useDispatch();
 
   const goForward = () => {
@@ -12,20 +14,20 @@ function Footer(props) {
       type: 'QUOTE_PROGRESS',
       payload: { divisor: 9, step_number: 0 }
     });
-    props.history.push('./quote/name');
+    props.history.push('./quote/sub-service');
   }
 
   return (
     <div className='footer'>
       <div className='footer__b780'>
         <div className='footer__b__b759'>
-          <img className='footer__b__b__b700' src={logo} alt='logo of ICE' />
+          <img className='footer__b__b__b700' src={w <= 768 ? logoMobile : logo} alt='logo of ICE' />
         </div>
       </div>
       <div className='footer__b538'>
         <div className='footer__b__b340'>
           <p>289 Windsor Lane<br /> New Brighton MN<br /> 55112</p>
-          <p className='footer__b__b__b256'>(612) 743-8351</p>
+          <p className='footer__b__b__b256'>(612) 900-0ICE</p>
         </div>
         <div className='footer__b__b160'>
           <button
