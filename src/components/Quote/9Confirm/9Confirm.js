@@ -1,6 +1,7 @@
 import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import axios from 'axios';
 
 function Confirm(props) {
 
@@ -51,12 +52,20 @@ function Confirm(props) {
         ],
       },
     };
+    // dispatch({
+    //   type: 'ADD_CUSTOMER',
+    //   payload: customer
+    // });
 
-    console.log('checking customer object', customer);
-    dispatch({
-      type: 'ADD_CUSTOMER',
-      payload: customer
-    });
+    axios({
+      data: JSON.stringify(customer),
+      method: 'POST',
+      url: '/.netlify/functions/addCustomer',
+    }).then(() => ({
+      statusCode: 200,
+      body: `Hello! Your customer has been added to ZuperPro!`
+    }));
+
     dispatch({
       type: 'QUOTE_PROGRESS',
       payload: { divisor: 9, step_number: step_number + 1 }
